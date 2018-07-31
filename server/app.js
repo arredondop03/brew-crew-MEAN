@@ -51,8 +51,34 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 
+
+
+///------- Routes -------------------------
+
+    //index
 const index = require('./routes/index');
 app.use('/', index);
 
+    //auth
+const authRoutes = require('./routes/auth-routes');
+app.use('/api', authRoutes);
+
+    //review
+const reviewRoutes = require('./routes/review-routes');
+app.use('/api', reviewRoutes);
+
+    //brewery
+const BreweryRoutes = require('./routes/brewery-routes');
+app.use('/api', BreweryRoutes);
+
+    //beer
+const beerRoutes = require('./routes/beer-routes');
+app.use('/api', beerRoutes);
+
+    //promo
+const promoRoutes = require('./routes/promo-routes');
+app.use('/api', promoRoutes);
+
+///------- End Of Routes ------------------
 
 module.exports = app;
