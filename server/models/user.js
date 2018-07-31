@@ -9,7 +9,7 @@ const userSchema = new Schema({
   username: {type: String, unique: true},
   beerList:[{type: Schema.Types.ObjectId, ref: 'Beer'}],
   favBreweries:[{type: Schema.Types.ObjectId, ref: "Brewery"}],
-  role: {type:String, enum: USERROLES }
+  role: {type:String, enum: USERROLES },
   reviews: [{type: Schema.Types.ObjectId, ref: "Review"}],
   userImage: String,
   barCrawlLoc:[{type: Schema.Types.ObjectId, ref: "BarCrawl"}]

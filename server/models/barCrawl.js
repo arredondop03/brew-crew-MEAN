@@ -5,7 +5,7 @@ const barCrawlSchema = new Schema ({
   name: String,
   invitees: [{ type: Schema.Types.ObjectId, ref: 'User'}],
   crawlLoc: [{
-    brewery: {type: Schema.Types.ObjectId, ref: 'Brewery'}
+    brewery: {type: Schema.Types.ObjectId, ref: 'Brewery'},
     time: String
   }],
   date: String,
