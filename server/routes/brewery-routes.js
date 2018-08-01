@@ -43,28 +43,25 @@ breweryRouter.get('/breweries/:id', (req, res, next)=>{
 
 
 //Create a brewery
-breweryRouter.post('/:brewery/create', (req, res, next) => {
+breweryRouter.post('/breweries/create', (req, res, next) => {
   Brewery.create({
     name: req.body.name,
-    location: [{
+    location: {
       address: req.body.address,
       city: req.body.city,
       zip: req.body.zip
-    }],
+    },
     phone: req.body.phone,
     site: req.body.site,
-    beers: [req.body.beers],
-    promotion: [req.body.promotion],
+    beers: req.body.beers,
+    promotion: req.body.promotion,
     hours: req.body.hours,
     coverCharge: req.body.coverCharge
-    //create brewery first
-    //form adds beers 
-    //button to add beers 
   })
-  .then((response)=>{
+  .then((response) => {
     res.json(response)
   })
-  .catch((err)=>{
+  .catch((err)=> {
     res.json(err);
   });
 });
