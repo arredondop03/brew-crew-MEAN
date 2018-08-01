@@ -53,9 +53,24 @@ breweryRouter.post('/:brewery/create', (req, res, next) => {
     }],
     phone: req.body.phone,
     site: req.body.site,
-    // beers: req.body
+    beers: [req.body.beers],
+    promotion: [req.body.promotion],
+    hours: req.body.hours,
+    coverCharge: req.body.coverCharge
+    //create brewery first
+    //form adds beers 
+    //button to add beers 
   })
-})
+  .then((response)=>{
+    res.json(response)
+  })
+  .catch((err)=>{
+    res.json(err);
+  });
+});
+
+//edit
+
 
 
 

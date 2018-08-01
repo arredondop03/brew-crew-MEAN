@@ -4,7 +4,7 @@ const Schema   = mongoose.Schema;
 const USERROLES = ["0", "1", "2"];
 
 const userSchema = new Schema({
-  email: {type: String, unique: true},
+  email: {type: String},
   password: String,
   username: {type: String, unique: true},
   beerList:[{type: Schema.Types.ObjectId}],
