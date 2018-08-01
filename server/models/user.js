@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
-const USERROLES = ["0", "1", "2"];
+const USERROLES = ["admin", "brewery", "user"];
 
 const userSchema = new Schema({
-  email: {type: String, unique: true},
+  email: {type: String},
   password: String,
-  username: {type: String, unique: true},
+  username: {type: String},
   beerList:[{type: Schema.Types.ObjectId}],
   favBreweries:[{type: Schema.Types.ObjectId}],
   role: {type:String, enum: USERROLES },

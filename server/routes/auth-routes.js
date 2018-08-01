@@ -7,11 +7,20 @@ const bcrypt   = require('bcryptjs');
 //bringing over the user model/schema
 const User     = require('../models/user');
 
+
+
+
+
+
+
+
+
+
 authRoutes.post('/signup', (req, res, next)=> {
   const username = req.body.username;
   const password = req.body.password;
 
-  if (!username || !password) {
+  if (username === "" || password === "") {
     res.status(400).json({message: "Please provide a username and password"})
     return;
   }
@@ -21,9 +30,7 @@ authRoutes.post('/signup', (req, res, next)=> {
     return;
   }
 
-  User.findOne({
-    username
-  }, "_id", (err, foundUser) => {
+  User.findOne({username}, "_id", (err, foundUser) => {
     if (foundUser) {
       res.status(400).json({message: "The username already exists"})
       return;
@@ -51,6 +58,21 @@ authRoutes.post('/signup', (req, res, next)=> {
 
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 authRoutes.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
