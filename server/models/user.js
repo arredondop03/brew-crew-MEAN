@@ -4,9 +4,9 @@ const Schema   = mongoose.Schema;
 const USERROLES = ["admin", "brewery", "user"];
 
 const userSchema = new Schema({
-  email: {type: String},
+  email: String,
   password: String,
-  username: {type: String},
+  username: String,
   beerList:[{type: Schema.Types.ObjectId}],
   favBreweries:[{type: Schema.Types.ObjectId}],
   role: {type:String, enum: USERROLES },
