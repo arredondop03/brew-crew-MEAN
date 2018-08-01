@@ -53,6 +53,7 @@ breweryRouter.post('/:brewery/create', (req, res, next) => {
     }],
     phone: req.body.phone,
     site: req.body.site,
+<<<<<<< HEAD
     // beers: req.body
   })
 })
@@ -79,3 +80,10 @@ breweryRouter.post('/brewery/:id/update', (req, res, next)=>{
 
   })
 })
+=======
+    // beers:
+  });
+});
+
+module.exports = breweryRouter;
+>>>>>>> 60d62a075795f353f97285f8acf0d976837da27b
