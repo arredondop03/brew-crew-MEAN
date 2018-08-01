@@ -4,6 +4,7 @@ const Beer       = require('../models/beer');
 const Brewery    = require('../models/brewery');
 
 //this should get all the beers regardless of the brewery?
+//nested then
 beerRouter.get('/beers', (req, res, next) => {
   Beer.find()
     .then((allTheBeers) => {
@@ -37,9 +38,9 @@ beerRouter.get('/beers/:id', (req, res, next)=>{
     res.json(response)
   })
   .catch((err)=>{
-    res.json(err)
-  })
-})
+    res.json(err);
+  });
+});
 
 //route for editing a beer and descriptions etc.
 beerRouter.post('/beers/:id/edit', (req, res, next)=>{
