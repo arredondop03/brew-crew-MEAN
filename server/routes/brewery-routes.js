@@ -41,6 +41,7 @@ breweryRouter.get('/breweries/:id', (req, res, next)=>{
 })
 
 
+//:brewery -> breweries/create
 
 //Create a brewery
 breweryRouter.post('/breweries/create', (req, res, next) => {
