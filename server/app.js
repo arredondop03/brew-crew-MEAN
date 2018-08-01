@@ -100,9 +100,6 @@ app.use('/api', breweryRoutes);
 const beerRoutes = require('./routes/beer-routes');
 app.use('/api', beerRoutes);
 
-    //promo
-const promoRoutes = require('./routes/promo-routes');
-app.use('/api', promoRoutes);
 
 ///------- End Of Routes ------------------
 

@@ -7,7 +7,6 @@ const Brewery    = require('../models/brewery');
 beerRouter.get('/beers', (req, res, next) => {
   Beer.find()
     .then((allTheBeers) => {
-
       res.json(allTheBeers);
       })
     .catch((err) => {
@@ -15,14 +14,13 @@ beerRouter.get('/beers', (req, res, next) => {
       })
     });
 
-//route for creating a beer as a brewing account
-beerRouter.post('/:brewery/beers/create/', (req, res, next) => {
+//route for creating a beer
+beerRouter.post('/beers/create/', (req, res, next) => {
   Beer.create({
     name: req.body.name,
-    brewery: req.params.brewery,
     description: req.body.description,
     alchContent: req.body.alchContent,
-    price: req.body.price,
+    price: req.body.price
   })
     .then((response) => {
     res.json(response)
@@ -32,9 +30,8 @@ beerRouter.post('/:brewery/beers/create/', (req, res, next) => {
     })
 })
 
-// :brewery will be saved for the brewery object ID,
-// req.params.brewery should pull that ID fingers crossed I guess
-beerRouter.get('/:brewery/beers/:id', (req, res, next)=>{
+//get specific beer
+beerRouter.get('/beers/:id', (req, res, next)=>{
   Beer.findById(req.params.id)
   .then((response)=>{
     res.json(response)
@@ -45,12 +42,11 @@ beerRouter.get('/:brewery/beers/:id', (req, res, next)=>{
 })
 
 //route for editing a beer and descriptions etc.
-beerRouter.post('/:brewery/beers/:id/edit', (req, res, next)=>{
+beerRouter.post('/beers/:id/edit', (req, res, next)=>{
   Beer.findByIdAndUpdate(req.params.id, {
     name: req.body.name,
-    brewery: req.params.brewery,
     description: req.body.description,
-    alchContent: req.body.alchContent.
+    alchContent: req.body.alchContent,
     price: req.body.price
   })
   .then((response) => {
@@ -62,7 +58,7 @@ beerRouter.post('/:brewery/beers/:id/edit', (req, res, next)=>{
 });
 
 //route for deleting a beer
-beerRouter.post('/:brewery/beers/:id/delete', (req, res, next) =>{
+beerRouter.post('/beers/:id/delete', (req, res, next) =>{
   Beer.findByIdAndRemove(req.params.id)
     .then((response)=>{
       res.json(response);
