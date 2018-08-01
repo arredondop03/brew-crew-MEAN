@@ -4,13 +4,13 @@ const Schema   = mongoose.Schema;
 const promoSchema = new Schema({
   name: String,
   duration: String,
-  brewery: {type: Schema.Types.ObjectId, ref: "Brewery"},
+  brewery: {type: Schema.Types.ObjectId},
   description: String,
   promoCode: String
-})
+});
 
 
-const Promotion = mongoose.model('Promotion', promoSchema)
+const Promotion = mongoose.model('Promotion', promoSchema);
 
 
 module.exports = Promotion;
