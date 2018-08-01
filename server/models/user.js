@@ -7,12 +7,12 @@ const userSchema = new Schema({
   email: {type: String, unique: true},
   password: String,
   username: {type: String, unique: true},
-  beerList:[{type: Schema.Types.ObjectId, ref: 'Beer'}],
-  favBreweries:[{type: Schema.Types.ObjectId, ref: "Brewery"}],
+  beerList:[{type: Schema.Types.ObjectId}],
+  favBreweries:[{type: Schema.Types.ObjectId}],
   role: {type:String, enum: USERROLES },
-  reviews: [{type: Schema.Types.ObjectId, ref: "Review"}],
+  reviews: [{type: Schema.Types.ObjectId}],
   userImage: String,
-  barCrawlLoc:[{type: Schema.Types.ObjectId, ref: "BarCrawl"}]
+  barCrawlLoc:[{type: Schema.Types.ObjectId}]
 },{timestamps: true});
 
 const User = mongoose.model("User", userSchema);
