@@ -24,6 +24,8 @@ breweryRouter.post('/:brewery/create', (req, res, next) => {
     }],
     phone: req.body.phone,
     site: req.body.site,
-    beers: 
-  })
-})
+    // beers:
+  });
+});
+
+module.exports = breweryRouter;
