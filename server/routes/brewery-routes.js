@@ -4,7 +4,7 @@ const Beer          = require('../models/beer');
 const Brewery       = require('../models/brewery');
 
 
-//All breweries 
+//All breweries
 breweryRouter.get('/breweries', (req, res, next) => {
   Brewery.find()
     .then((allTheBreweries) => {
@@ -53,37 +53,11 @@ breweryRouter.post('/:brewery/create', (req, res, next) => {
     }],
     phone: req.body.phone,
     site: req.body.site,
-<<<<<<< HEAD
     // beers: req.body
   })
 })
 
-//Edit the breweries content 
-//Get the brewery 
-breweryRouter.get('/brewery/:id/edit', (req, res, next) => {
-  const id = req.params.id;
 
-  Brewery.findById(id)
-  .then((theBrewery) =>{
-    res.json(theBrewery)
-  })
-  .catch((err)=>{
-    res.json(err)
-  });
-});
 
-//Now make changes to that Brewery
-breweryRouter.post('/brewery/:id/update', (req, res, next)=>{
-  const id = req.params.id;
-
-  Brewery.findByIdAndUpdate(id, {
-
-  })
-})
-=======
-    // beers:
-  });
-});
 
 module.exports = breweryRouter;
->>>>>>> 60d62a075795f353f97285f8acf0d976837da27b
