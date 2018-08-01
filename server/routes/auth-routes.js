@@ -24,6 +24,7 @@ authRoutes.post('/signup', (req, res, next)=> {
   User.findOne({
     username
   }, "_id", (err, foundUser) => {
+
     if (foundUser) {
       res.status(400).json({message: "The username already exists"})
       return;
@@ -32,9 +33,10 @@ authRoutes.post('/signup', (req, res, next)=> {
     const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    const theUser = new User({username: username, password: hashPass});
+    let theUser = new User({username: username, password: hashPass});
 
     theUser.save((err) => {
+      console.log('THIS IS THE ERRORRRRR=========',err)
       if(err){
         res.status(400).json({message: "Something went wrong here"});
         return;
