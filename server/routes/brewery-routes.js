@@ -35,9 +35,9 @@ breweryRouter.get('/breweries/:id', (req, res, next)=>{
       })
     })
   })
+  .catch((err)=>{
+    res.json(err)
 })
-.catch((err)=>{
-  res.json(err)
 })
 
 
