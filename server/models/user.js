@@ -4,15 +4,16 @@ const Schema   = mongoose.Schema;
 const USERROLES = ["admin", "brewery", "user"];
 
 const userSchema = new Schema({
-  email: String,
+  // email: String,
   password: String,
   username: String,
-  beerList:[{type: Schema.Types.ObjectId, ref: "Beer"}],
-  favBreweries:[{type: Schema.Types.ObjectId, ref: "Brewery"}],
+  // beerList:[{type: Schema.Types.ObjectId, ref: 'Beer'}],
+  favBreweries:[{type: Schema.Types.ObjectId, ref: 'Brewery'}],
   role: {type:String, enum: USERROLES },
-  reviews: [{type: Schema.Types.ObjectId, ref: "Review"}],
-  userImage: String,
-  barCrawlLoc:[{type: Schema.Types.ObjectId, ref: "Brewery"}]
+  // reviews: [{type: Schema.Types.ObjectId}],
+  // userImage: String,
+  // barCrawlLoc:[{type: Schema.Types.ObjectId}]
+
 },{timestamps: true});
 
 const User = mongoose.model("User", userSchema);

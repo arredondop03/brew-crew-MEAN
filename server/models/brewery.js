@@ -3,15 +3,17 @@ const Schema   = mongoose.Schema;
 
 const brewerySchema = new Schema({
   name: String,
-  address: String,
-  zip: String,
-  city: String,
-  phone: String,
+  // location: {
+  //   address: String,
+  //   zip: String,
+  //   city: String
+  // },
+  // phone: String,
   site: String,
   beers: [{type: Schema.Types.ObjectId, ref: 'Beer'}],
-  promotion: String,
-  hours: String,
-  coverCharge: String
+  // promotion: {type: Schema.Types.ObjectId},
+  // hours: String,
+  // coverCharge: String
 });
 
 
