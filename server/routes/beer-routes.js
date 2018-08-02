@@ -37,6 +37,7 @@ beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
 
 
 //route for creating a beer
+
 //works
 beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
   // db.Brewery.update(
@@ -48,13 +49,13 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
     alchContent: req.body.alchContent,
     price: req.body.price
   })
-
     .then((response) => {
         res.json(response);
       })
     .catch((err) => {
-      res.json(err);
-    });
+        res.json(err);
+      })
+    })
 });
 
 //get specific beer
