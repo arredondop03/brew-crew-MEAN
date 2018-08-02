@@ -3,15 +3,19 @@ const Schema   = mongoose.Schema;
 
 const brewerySchema = new Schema({
   name: String,
-  location: {
-    address: String,
-    zip: String,
-    city: String
-  },
+  address: String,
+  zip: String,
+  city: String,
   phone: String,
   site: String,
-  beers: {type: Schema.Types.ObjectId},
-  promotion: {type: Schema.Types.ObjectId},
+  beers: [
+    {
+      beerId: {
+        type: Schema.Types.ObjectId, ref: 'Beer'
+      }
+    }
+  ],
+  promotion: String,
   hours: String,
   coverCharge: String
 });
