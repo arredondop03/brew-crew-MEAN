@@ -37,26 +37,38 @@ beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
 
 
 //route for creating a beer
-
-//works
+//works but will not add to a brewery
 beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
-  // db.Brewery.update(
-  //   /
-  // )
-  Beer.create({
+  const newBeer = new Beer({
     name: req.body.name,
     description: req.body.description,
     alchContent: req.body.alchContent,
     price: req.body.price
-  })
+  });
+  newBeer.save()
     .then((response) => {
-        res.json(response);
+      console.log("I am the new Beer", response);
+      Brewery.findById(req.brewery._id)
+      .then(thatBrewery => {
+        console.log("Say Hello ", req.brewery._id);
+          thatBrewery.itsBeerArray.push(response._id);
+          console.log("Let's get that Beer", thatBrewery);
+          thatBrewery.save()
+          .then(()=>{
+            res.json(response);
+          })
+          .catch((err)=>{
+            res.json(err);
+          });
+        })
+        .catch((err)=>{
+          res.json(err);
+        });
       })
     .catch((err) => {
         res.json(err);
-      })
-    })
-});
+      });
+    });
 
 //get specific beer
 //works
