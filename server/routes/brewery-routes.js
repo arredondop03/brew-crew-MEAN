@@ -15,31 +15,30 @@ breweryRouter.get('/breweries', (req, res, next) => {
     });
 });
 
+
 //One Brewery
 breweryRouter.get('/breweries/:id', (req, res, next)=>{
+
   Brewery.findById(req.params.id)
+  .populate('beer')
   .then((breweryFromDB)=>{
-    Beer.findById({_id: breweryFromDB.beers})
-    .then((beersFromDB)=>{
-      Review.findById({_id: beersFromDB.review})
-      .then((reviewFromDB)=>{
-        data = {
-          Brewery: breweryFromDB,
-          Beer: beersFromDB,
-          Review: reviewFromDB
-        }
-        res.json(data)
-      })
-      .catch((err)=>{
-        res.json(err)
-      })
-    })
+     res.json(breweryFromDB)
   })
   .catch((err)=>{
     res.json(err)
-})
-})
+  });
+});
 
+//beers
+breweryRouter.get('/breweries/:id', (req, res, next)=>{
+  Beer.find()
+  .then((allTeBeers)=>{
+    res.json(allTeBeers)
+  })
+  .catch((err)=>{
+    res.json(err)
+  });
+});
 
 //Create a brewery
 breweryRouter.post('/breweries/create', (req, res, next) => {
@@ -60,8 +59,11 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
   })
   .catch((err)=> {
     res.json(err);
+    //populate
+//populate
   });
 });
+
 
 //view brewery details
 breweryRouter.get('/breweries/:id', (req, res , next)=>{
@@ -73,7 +75,6 @@ breweryRouter.get('/breweries/:id', (req, res , next)=>{
     res.json(err)
   })
 })
-
 
 //edit a brewery
 breweryRouter.post('/breweries/:id/edit', (req, res, next)=>{

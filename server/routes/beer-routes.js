@@ -29,9 +29,8 @@ beerRouter.post('/beers/create/', (req, res, next) => {
         res.json(response)
       })
     .catch((err) => {
-        res.json(err);
-      })
-    })
+      res.json(err);
+    });
 });
 
 //get specific beer
