@@ -17,15 +17,17 @@ beerRouter.get('/beers', (req, res, next) => {
 
 //route for creating a beer
 beerRouter.post('/beers/create/', (req, res, next) => {
-  Beer.create({
-    name: req.body.name,
-    description: req.body.description,
-    alchContent: req.body.alchContent,
-    price: req.body.price
-  })
-    .then((response) => {
-    res.json(response)
+    Beer.create({
+      name: req.body.name,
+      description: req.body.description,
+      alchContent: req.body.alchContent,
+      price: req.body.price
     })
+    .then((createdBeers)=>{
+    Brewery.findByAndUpdate(req.brewery._id, {beers: createdBeers._id})
+    .then((response) => {
+        res.json(response)
+      })
     .catch((err) => {
       res.json(err);
     });
