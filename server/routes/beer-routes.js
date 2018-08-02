@@ -19,6 +19,7 @@ beerRouter.get('/beers', (req, res, next) => {
 beerRouter.post('/beers/create/', (req, res, next) => {
     Beer.create({
       name: req.body.name,
+      brewery: req.body.brewery
       description: req.body.description,
       alchContent: req.body.alchContent,
       price: req.body.price
