@@ -55,7 +55,6 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
     .catch((err) => {
       res.json(err);
     });
-  // });
 });
 
 //get specific beer
