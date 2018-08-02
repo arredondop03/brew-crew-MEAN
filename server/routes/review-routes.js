@@ -1,10 +1,10 @@
 const express     = require('express');
-const router      = express.Router();
-const Review      = ('../models/review.js');
+const reviewRouter      = express.Router();
+const Review      = require('../models/review');
 
 
 //All reviews for that beer
-router.get('/review', (req, res, next)=>{
+reviewRouter.get('/review', (req, res, next)=>{
   Review.find()
   .then((allBeerReviews)=>{
     res.json(allBeerReviews);
@@ -15,7 +15,7 @@ router.get('/review', (req, res, next)=>{
 });
 
 //Create a review for that beer
-router.post('/review/create', (req, res, next)=>{
+reviewRouter.post('/review/create', (req, res, next)=>{
   Review.create({
     review: req.body.review,
     rating: req.body.rating
@@ -29,7 +29,7 @@ router.post('/review/create', (req, res, next)=>{
 });
 
 //Edit your review
-router.get('/review/:id/edit', (req, res, next)=>{
+reviewRouter.get('/review/:id/edit', (req, res, next)=>{
   const id = req.params.id;
 
   Review.findById(id)
@@ -41,7 +41,7 @@ router.get('/review/:id/edit', (req, res, next)=>{
   });
 });
 
-router.post('/review/:id/update', (req, res, next)=>{
+reviewRouter.post('/review/:id/update', (req, res, next)=>{
   const id = req.params.id;
 
   Review.findByIdUpdate(id, {
@@ -57,7 +57,7 @@ router.post('/review/:id/update', (req, res, next)=>{
 });
 
 //Delete said review
-router.delete('/review/:id/remove', (req, res, next) => {
+reviewRouter.delete('/review/:id/remove', (req, res, next) => {
   const id = req.params.id;
 
   Review.findByIdAndRemove(id)
@@ -69,4 +69,4 @@ router.delete('/review/:id/remove', (req, res, next) => {
   });
 });
 
-module.exports = router;
+module.exports = reviewRouter;

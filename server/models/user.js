@@ -13,6 +13,7 @@ const userSchema = new Schema({
   // reviews: [{type: Schema.Types.ObjectId}],
   // userImage: String,
   // barCrawlLoc:[{type: Schema.Types.ObjectId}]
+
 },{timestamps: true});
 
 const User = mongoose.model("User", userSchema);
