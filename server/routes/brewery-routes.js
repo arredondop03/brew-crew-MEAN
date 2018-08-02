@@ -48,7 +48,7 @@ const mongoose      =require ('mongoose')
 breweryRouter.get('/breweries/:id', (req, res, next)=>{
 
   Brewery.findById(req.params.id)
-  .populate('beer')
+  .populate('beer.beerId')
   .then((breweryFromDB)=>{
      res.json(breweryFromDB)
   })
@@ -145,11 +145,16 @@ breweryRouter.post('/breweries/:id/edit', (req, res, next)=>{
     zip: req.body.zip,
     phone: req.body.phone,
     site: req.body.site,
-    beers: req.body.beers,
+    // beers: req.body.beers,
     promotion: req.body.promotion,
     hours: req.body.hours,
     coverCharge: req.body.coverCharge
-  })
+  }
+  // db.Brewery.update(
+  //   {id: }
+  //   {$push: {beers: beer._id}}
+  // ),
+)
   .then((response)=>{
     res.json(response)
   })
@@ -174,3 +179,4 @@ breweryRouter.post('/breweries/:id/delete', (req, res, next)=>{
 
 
 module.exports = breweryRouter;
+
