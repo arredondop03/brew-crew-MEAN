@@ -19,10 +19,9 @@ beerRouter.get('/beers', (req, res, next) => {
 beerRouter.post('/beers/create/', (req, res, next) => {
     Beer.create({
       name: req.body.name,
-      brewery: req.body.brewery
       description: req.body.description,
       alchContent: req.body.alchContent,
-      price: req.body.price
+      price: req.body.price,
     })
     .then((createdBeers)=>{
     Brewery.findByAndUpdate(req.brewery._id, {beers: createdBeers._id})
@@ -30,8 +29,9 @@ beerRouter.post('/beers/create/', (req, res, next) => {
         res.json(response)
       })
     .catch((err) => {
-      res.json(err);
-    });
+        res.json(err);
+      })
+    })
 });
 
 //get specific beer

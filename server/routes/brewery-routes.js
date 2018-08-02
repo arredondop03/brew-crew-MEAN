@@ -18,7 +18,6 @@ breweryRouter.get('/breweries', (req, res, next) => {
 
 //One Brewery
 breweryRouter.get('/breweries/:id', (req, res, next)=>{
-
   Brewery.findById(req.params.id)
   .populate('beer')
   .then((breweryFromDB)=>{
@@ -30,15 +29,15 @@ breweryRouter.get('/breweries/:id', (req, res, next)=>{
 });
 
 //beers
-breweryRouter.get('/breweries/:id', (req, res, next)=>{
-  Beer.find()
-  .then((allTeBeers)=>{
-    res.json(allTeBeers)
-  })
-  .catch((err)=>{
-    res.json(err)
-  });
-});
+// breweryRouter.get('/breweries/:id', (req, res, next)=>{
+//   Beer.find()
+//   .then((allTeBeers)=>{
+//     res.json(allTeBeers)
+//   })
+//   .catch((err)=>{
+//     res.json(err)
+//   });
+// });
 
 //Create a brewery
 breweryRouter.post('/breweries/create', (req, res, next) => {
@@ -46,13 +45,11 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
     name: req.body.name,
     address: req.body.address,
     city: req.body.city,
+    state: req.body.state,
     zip: req.body.zip,
     phone: req.body.phone,
     site: req.body.site,
-    beers: req.body.beers,
-    promotion: req.body.promotion,
     hours: req.body.hours,
-    coverCharge: req.body.coverCharge
   })
   .then((response) => {
     res.json(response)
