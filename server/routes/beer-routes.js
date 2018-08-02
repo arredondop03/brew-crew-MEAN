@@ -28,8 +28,8 @@ beerRouter.post('/beers/create/', (req, res, next) => {
     })
     .catch((err) => {
       res.json(err);
-    })
-})
+    });
+});
 
 //get specific beer
 beerRouter.get('/beers/:id', (req, res, next)=>{

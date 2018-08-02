@@ -15,31 +15,30 @@ breweryRouter.get('/breweries', (req, res, next) => {
     });
 });
 
+
 //One Brewery
 breweryRouter.get('/breweries/:id', (req, res, next)=>{
+
   Brewery.findById(req.params.id)
+  .populate('beer')
   .then((breweryFromDB)=>{
-    Beer.findById({_id: breweryFromDB.beers})
-    .then((beersFromDB)=>{
-      Review.findById({_id: beersFromDB.review})
-      .then((reviewFromDB)=>{
-        data = {
-          Brewery: breweryFromDB,
-          Beer: beersFromDB,
-          Review: reviewFromDB
-        }
-        res.json(data)
-      })
-      .catch((err)=>{
-        res.json(err)
-      })
-    })
+     res.json(breweryFromDB)
   })
   .catch((err)=>{
     res.json(err)
-})
-})
+  });
+});
 
+//beers
+breweryRouter.get('/breweries/:id', (req, res, next)=>{
+  Beer.find()
+  .then((allTeBeers)=>{
+    res.json(allTeBeers)
+  })
+  .catch((err)=>{
+    res.json(err)
+  });
+});
 
 //:brewery -> breweries/create
 
@@ -64,8 +63,13 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
   })
   .catch((err)=> {
     res.json(err);
+    //populate
+//populate
   });
 });
+
+//Need to be able to create with in object 
+
 
 //edit
 
