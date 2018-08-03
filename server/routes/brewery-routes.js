@@ -6,16 +6,16 @@ const User          = require('../models/user')
 const mongoose      =require ('mongoose')
 
 
-//All breweries
-// breweryRouter.get('/breweries', (req, res, next) => {
-//   Brewery.find()
-//     .then((allTheBreweries) => {
-//       res.json(allTheBreweries);
-//     })
-//     .catch((err)=> {
-//       res.json(err);
-//     });
-// });
+// All breweries
+breweryRouter.get('/breweries', (req, res, next) => {
+  Brewery.find()
+    .then((allTheBreweries) => {
+      res.json(allTheBreweries);
+    })
+    .catch((err)=> {
+      res.json(err);
+    });
+});
 
 // //One Brewery
 // breweryRouter.get('/breweries/:id', (req, res, next)=>{
@@ -78,15 +78,14 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
     phone: req.body.phone,
     site: req.body.site,
     hours: req.body.hours,
-    // _id: new mongoose.Types.ObjectId()
   })
   newBrewery.save()
   .then((response)=>{
     console.log(response)
     User.findById(req.user._id)
     .then(foundUser =>{
-      foundUser.favBreweries.unshift(response._id)
-      console.log('favBreweryy..........',foundUser.favBreweries)
+      foundUser.favBreweries.unshift(response._id);
+      console.log('favBreweryy..........', foundUser.favBreweries)
       foundUser.save()
       .then(()=>{
   
@@ -103,7 +102,6 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
   .catch(err => res.json(err))
 
 });
-
 
 // Brewery.create({
 //   name: req.body.name,
@@ -146,16 +144,11 @@ breweryRouter.post('/breweries/:id/edit', (req, res, next)=>{
     zip: req.body.zip,
     phone: req.body.phone,
     site: req.body.site,
-    // beers: req.body.beers,
+    beers: req.body.beers,
     promotion: req.body.promotion,
     hours: req.body.hours,
     coverCharge: req.body.coverCharge
-  }
-  // db.Brewery.update(
-  //   {id: }
-  //   {$push: {beers: beer._id}}
-  // ),
-)
+  })
   .then((response)=>{
     res.json(response)
   })
