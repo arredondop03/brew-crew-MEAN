@@ -6,7 +6,6 @@ const Brewery       = require('../models/brewery');
 
 router.get('/breweries/review', (req, res, next)=>{
   Brewery.findById(req.user.favBreweries[0])
-
   .then((theBrewery)=>{
     res.json(theBrewery.review);
   })
@@ -15,7 +14,6 @@ router.get('/breweries/review', (req, res, next)=>{
     next(err);
   });
 });
-
 
 //All reviews for that beer
 router.get('/review', (req, res, next)=>{
@@ -37,10 +35,11 @@ router.post('/review/:id/create', (req, res, next)=>{
     belongsToBeer: req.params.id
   })
   .then((newReview)=>{
-    Review.findById(newReview.review)
-    .then(reviewFromDb => {
-      reviewFromDb.reviews.push(newReview);
-      reviewFromDb.save();
+    Beer.findById(req.params.id)
+    // Review.findById(newReview.review)
+    .then(thatBeerFromDb => {
+      thatBeerFromDb.review.push(newReview._id);
+      thatBeerFromDb.save();
       res.status(200).json({
         review: newReview,
       })

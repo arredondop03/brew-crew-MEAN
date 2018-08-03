@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const reviewSchema =  new Schema({
-  // rating: {
-  //   type: Number,
-  //   enum: [1, 2, 3, 4, 5]
-  // },
-  // belongsTo: [{type: Schema.Types.ObjectId}],
   author: {type: Schema.Types.ObjectId, ref: "User"},
   review: String,
   rating: {
@@ -14,6 +9,7 @@ const reviewSchema =  new Schema({
     enum: [1, 2, 3, 4, 5]
   },
   belongsToBeer: {type: Schema.Types.ObjectId, ref: "Beer"},
+
 },
   {timestamps: true}
 );
