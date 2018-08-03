@@ -1,4 +1,5 @@
 const express     = require('express');
+<<<<<<< HEAD
 const router      = express.Router();
 const Review      = require ('../models/review.js');
 const User          = require('../models/user')
@@ -36,6 +37,31 @@ router.post('/review/create', (req, res, next)=>{
     .catch((err)=>{
       res.json(err)
     })
+=======
+const reviewRouter      = express.Router();
+const Review      = require('../models/review');
+
+
+//All reviews for that beer
+reviewRouter.get('/review', (req, res, next)=>{
+  Review.find()
+  .then((allBeerReviews)=>{
+    res.json(allBeerReviews);
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
+
+//Create a review for that beer
+reviewRouter.post('/review/create', (req, res, next)=>{
+  Review.create({
+    review: req.body.review,
+    rating: req.body.rating
+  })
+  .then((response)=>{
+    res.json(response);
+>>>>>>> 8f153afff5580b255b784a14f6a79a271d6f29b7
   })
   .catch((err)=>{
     res.json(err)
@@ -43,8 +69,13 @@ router.post('/review/create', (req, res, next)=>{
 })
 
 //Edit your review
+<<<<<<< HEAD
 // router.get('/review/:id/edit', (req, res, next)=>{
 //   const id = req.params.id;
+=======
+reviewRouter.get('/review/:id/edit', (req, res, next)=>{
+  const id = req.params.id;
+>>>>>>> 8f153afff5580b255b784a14f6a79a271d6f29b7
 
 //   Brewery.findById(req.user.favBreweries[0])
 //   .then((theBrewery)=>{
@@ -55,7 +86,11 @@ router.post('/review/create', (req, res, next)=>{
 //   });
 // });
 
+<<<<<<< HEAD
 router.post('/breweries/review/:id/update', (req, res, next)=>{
+=======
+reviewRouter.post('/review/:id/update', (req, res, next)=>{
+>>>>>>> 8f153afff5580b255b784a14f6a79a271d6f29b7
   const id = req.params.id;
 
   Brewery.findByIdUpdate(id, {
@@ -71,7 +106,7 @@ router.post('/breweries/review/:id/update', (req, res, next)=>{
 });
 
 //Delete said review
-router.delete('/review/:id/remove', (req, res, next) => {
+reviewRouter.delete('/review/:id/remove', (req, res, next) => {
   const id = req.params.id;
 
   Review.findByIdAndRemove(id)
@@ -83,4 +118,4 @@ router.delete('/review/:id/remove', (req, res, next) => {
   });
 });
 
-module.exports = router;
+module.exports = reviewRouter;
