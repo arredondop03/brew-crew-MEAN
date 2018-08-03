@@ -19,25 +19,26 @@ router.get('/breweries/review', (req, res, next)=>{
 });
 
 
-//Create a review for that beer
-router.post('/review/create', (req, res, next)=>{
-  const newReview = {
-    author: req.body.author,
-    review: req.body.review
-  }
+// //Create a review for that beer
+//The Bad one delete from all 
+// router.post('/review/create', (req, res, next)=>{
+//   const newReview = {
+//     author: req.body.author,
+//     review: req.body.review
+//   }
 
-  Brewery.findById(req.user.favBreweries[0])
-  .then((theBrewery)=>{
-    theBrewery.review.unshift(newReview)
-    theBrewery.save()
-    .then((response)=>{
-      res.json(response)
-    })
-    .catch((err)=>{
-      res.json(err)
-    })
-  });
-});
+//   Brewery.findById(req.user.favBreweries[0])
+//   .then((theBrewery)=>{
+//     theBrewery.review.unshift(newReview)
+//     theBrewery.save()
+//     .then((response)=>{
+//       res.json(response)
+//     })
+//     .catch((err)=>{
+//       res.json(err)
+//     })
+//   });
+// });
 
 
 //All reviews for that beer
@@ -56,16 +57,17 @@ router.post('/review/:id/create', (req, res, next)=>{
   Review.create({
     author: req.user._id,
     review: req.body.review,
-    rating: req.body.rating
+    rating: req.body.rating,
+    belongsToBeer: req.params.id
   })
   .then((newReview)=>{
-    Review.findById(newReview.review)
-    .then(reviewFromDb => {
-      reviewFromDb.reviews.push(newReview);
-      reviewFromDb.save();
+    Beer.findById(req.params.id)
+    // Review.findById(newReview.review)
+    .then(thatBeerFromDb => {
+      thatBeerFromDb.review.push(newReview._id);
+      thatBeerFromDb.save();
       res.status(200).json({
-        review: newReview,
-
+        // review: newReview,
       })
     })
     res.json(response);
