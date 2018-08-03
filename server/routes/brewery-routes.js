@@ -65,7 +65,6 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
 >>>>>>> c738d0e2b4d5503e13253714320b8b01a804f84f
 
 
-
 //view brewery details
 breweryRouter.get('/breweries/:id', (req, res , next)=>{
   Brewery.findById(req.params.id)
@@ -102,13 +101,34 @@ breweryRouter.post('/breweries/:id/edit', (req, res, next)=>{
 
 //delete a brewery
 breweryRouter.post('/breweries/:id/delete', (req, res, next)=>{
-  Brewery.findByIdAndRemove(req.params.id)
-  .then((response)=>{
-    res.json(response);
+  Brewery.findById(req.params.id)
+  .then((breweryFromDB)=>{
+    Beer.remove({_id: {$in: breweryFromDB.beers}})
+    .then((beerFromDB)=>{
+      console.log('Results from DB from delete beer', beerFromDB)
+      // if (beerFromDB === null) {
+      //   res.status(400).json({message: "Beer not found"})
+      // }
+      // else {
+      //   res.status(200).json(beerFromDB)
+      // }
+      Brewery.remove({_id: breweryFromDB._id})
+      // res.status(200).json({message: "Nice it's goooone"})
+      .then((brewFromDB)=>{
+        console.log('Results from DB from delete brewery', brewFromDB)
+        if (brewFromDB === null) {
+          res.status(400).json({message: "Brewery not found"})
+        }
+        else {
+          res.status(200).json(brewFromDB)
+        }
+      });
+    });
   })
   .catch((err)=>{
-    next(err);
-  });
+    console.log("the error from deleting brewery", err)
+    res.status(500).json({message: "nnnnoooooooooooo!"})
+  })
 });
 
 
