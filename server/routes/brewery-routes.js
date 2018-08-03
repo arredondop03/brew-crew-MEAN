@@ -40,7 +40,6 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
     phone: req.body.phone,
     site: req.body.site,
     hours: req.body.hours,
-    beers: req.body.beers
   })
   newBrewery.save()
   .then((response)=>{
