@@ -1,58 +1,59 @@
 const express    = require('express');
 const beerRouter = express.Router();
+
 const Beer       = require('../models/beer');
 const Brewery    = require('../models/brewery');
 
-//this should get all the beers regardless of the brewery?
-//nested then
+
+//this should get all the beers regardless of the brewery
 beerRouter.get('/beers', (req, res, next) => {
   Beer.find()
     .then((allTheBeers) => {
       res.json(allTheBeers);
       })
     .catch((err) => {
-      res.json(err)
-      })
+      res.json(err);
+    });
 });
-
 
 //Beers from that one brewery    
 beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
   const id = req.params.id;
 
-  Brewery.findById(id)
-  .then((breweryFromBD) =>{
-    Beers.find(breweryFromBD.beers)
+  // Brewery.findById(id)
+  // .then((breweryFromBD) =>{
+  //   console.log('This is the Brewery', breweryFromBD);
+    Beer.find({brewery: id})
     .then((beersFromDB)=>{
-      res.json(beersFromDB)
+      console.log('The beer from the Database', beersFromDB);
+      res.json(beersFromDB);
     })
     .catch((err)=>{
-      res.json(err)
+      res.json(err);
     });
-  })
-  .catch((err)=>{
-    res.json(err)
-  });
+  // })
+  // .catch((err)=>{
+  //   res.json(err);
+  // });
 });
 
 
 //route for creating a beer
-//works but will not add to a brewery
 beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
   const newBeer = new Beer({
     name: req.body.name,
     description: req.body.description,
     alchContent: req.body.alchContent,
     price: req.body.price,
+    brewery: req.params.id
   });
   newBeer.save()
     .then((response) => {
       console.log("I am the new Beer", response);
       Brewery.findById(req.params.id)
       .then(thatBrewery => {
-        console.log("Say Hello ", thatBrewery);
           thatBrewery.beers.push(response._id);
-          console.log("Let's get that Beer", thatBrewery);
+          console.log("Let's get see the brewery", thatBrewery);
           thatBrewery.save()
           .then(()=>{
             res.json(response);
@@ -70,7 +71,7 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
       });
     });
 
-//get specific beer
+//That special drink 
 //works
 beerRouter.get('/beers/:id', (req, res, next)=>{
   Beer.findById(req.params.id)
