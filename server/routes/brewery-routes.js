@@ -98,10 +98,6 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
   })
 
   .catch(err => res.json(err))
-<<<<<<< HEAD
-=======
-
->>>>>>> 8f153afff5580b255b784a14f6a79a271d6f29b7
 });
 
 
