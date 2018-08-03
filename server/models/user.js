@@ -7,8 +7,13 @@ const userSchema = new Schema({
   email: String,
   password: String,
   username: String,
+  // role: {type:String, enum: USERROLES },
+  reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
+  // userImage: String,
+  // barCrawlLoc:[{type: Schema.Types.ObjectId}]
   myBrewery:{type: Schema.Types.ObjectId, ref: 'Brewery'},
   role: {type:String, enum: USERROLES },
+
 },{timestamps: true});
 
 const User = mongoose.model("User", userSchema);

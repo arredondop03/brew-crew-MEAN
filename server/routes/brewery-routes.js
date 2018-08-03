@@ -2,8 +2,9 @@ const express       = require('express');
 const breweryRouter = express.Router();
 const Beer          = require('../models/beer');
 const Brewery       = require('../models/brewery');
-const mongoose      = require('mongoose');
-const User          = require('../models/user');
+const User          = require('../models/user')
+const mongoose      =require ('mongoose')
+
 
 // All breweries
 breweryRouter.get('/breweries', (req, res, next) => {
