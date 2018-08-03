@@ -41,7 +41,6 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
     site: req.body.site,
     hours: req.body.hours,
     beers: req.body.beers
-
   })
   newBrewery.save()
   .then((response)=>{
@@ -54,11 +53,10 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
         res.json(response)
       })
       .catch(err => console.log(err))
-    })
+      })
     .catch(err => res.json(err))
-  })
-  .catch(err => res.json(err))
-});
+  });
+
 
 
 //view brewery details
