@@ -2,9 +2,8 @@ const express       = require('express');
 const breweryRouter = express.Router();
 const Beer          = require('../models/beer');
 const Brewery       = require('../models/brewery');
-const User          = require('../models/user')
-const mongoose      =require ('mongoose')
-
+const mongoose      = require('mongoose');
+const User          = require('../models/user');
 
 // All breweries
 breweryRouter.get('/breweries', (req, res, next) => {
@@ -41,6 +40,7 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
     phone: req.body.phone,
     site: req.body.site,
     hours: req.body.hours,
+    beers: req.body.beers
   })
   newBrewery.save()
   .then((response)=>{
