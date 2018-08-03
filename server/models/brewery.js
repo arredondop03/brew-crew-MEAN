@@ -20,19 +20,17 @@ const reviewSchema =  new Schema({
 
 const brewerySchema = new Schema({
   name: String,
-  // location: {
-  //   address: String,
-  //   zip: String,
-  //   city: String
-  // },
-  // phone: String,
+  address: String,
+  zip: String,
+  city: String,
+  phone: String,
   site: String,
   beers: [{type: Schema.Types.ObjectId, ref: 'Beer'}],
-  review: [{type: reviewSchema }]
-
-  // promotion: {type: Schema.Types.ObjectId},
-  // hours: String,
+  review: [{type: reviewSchema }],
+  promotion: {type: Schema.Types.ObjectId},
+  hours: String,
   // coverCharge: String
+
 });
 
 
