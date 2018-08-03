@@ -3,13 +3,7 @@ const Schema   = mongoose.Schema;
 
 const beerSchema = new Schema({
   name: String,
-  brewery: [
-    {
-      breweryId: {
-        type: Schema.Types.ObjectId, ref: "Brewery"
-      }
-    }
-  ],
+  breweryId: {type: Schema.Types.ObjectId, ref: "Brewery"},
   description: String,
   alchContent: String,
   price: String,

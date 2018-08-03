@@ -16,13 +16,13 @@ beerRouter.get('/beers', (req, res, next) => {
 });
 
 
-//Beers from that one brewery    
+//Beers from that one brewery
 beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
   const id = req.params.id;
-
   Brewery.findById(id)
+  .populate('Beer')
   .then((breweryFromBD) =>{
-    Beers.find(breweryFromBD.beers)
+    Beer.find(id.beers)
     .then((beersFromDB)=>{
       res.json(beersFromDB)
     })
@@ -40,15 +40,13 @@ beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
 
 //works
 beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
-  // db.Brewery.update(
-  //   /
-  // )
+  const id = req.params.id;
   Beer.create({
     name: req.body.name,
     description: req.body.description,
     alchContent: req.body.alchContent,
     price: req.body.price
-  })
+  })    
     .then((response) => {
         res.json(response);
       })
@@ -56,7 +54,7 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
         res.json(err);
       })
     })
-});
+
 
 //get specific beer
 //works
@@ -87,7 +85,7 @@ beerRouter.post('/breweries/:id/beers/edit/:beerid', (req, res, next)=>{
 });
 
 //route for deleting a beer
-beerRouter.post(`/breweries/:id/beers/delete/:beerid`, (req, res, next) =>{
+beerRouter.post('/breweries/:id/beers/delete/:beerid', (req, res, next) =>{
   Beer.findByIdAndRemove(req.params.beerid)
     .then((response)=>{
       res.json(response);

@@ -10,6 +10,7 @@ const User     = require('../models/user');
 authRoutes.post('/signup', (req, res, next)=> {
   const username = req.body.username;
   const password = req.body.password;
+  const email    = req.body.email;
 
 
   if (username === "" || password === "") {
@@ -32,7 +33,7 @@ authRoutes.post('/signup', (req, res, next)=> {
     const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    let theUser = new User({username: username, password: hashPass});
+    let theUser = new User({username: username, password: hashPass, email: email});
 
     theUser.save((err) => {
       console.log('THIS IS THE ERRORRRRR=========',err)
