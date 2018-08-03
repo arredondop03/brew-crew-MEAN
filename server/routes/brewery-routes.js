@@ -56,9 +56,7 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
       .catch(err => console.log(err))
     })
     .catch(err => res.json(err))
-  })
-  .catch(err => res.json(err))
-});
+  });
 
 
 //view brewery details
