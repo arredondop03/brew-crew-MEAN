@@ -6,16 +6,18 @@ const User          = require('../models/user')
 const mongoose      =require ('mongoose')
 
 
-//All breweries
-// breweryRouter.get('/breweries', (req, res, next) => {
-//   Brewery.find()
-//     .then((allTheBreweries) => {
-//       res.json(allTheBreweries);
-//     })
-//     .catch((err)=> {
-//       res.json(err);
-//     });
-// });
+// All breweries
+breweryRouter.get('/breweries', (req, res, next) => {
+  Brewery.find()
+  .populate('favBreweries')
+
+    .then((allTheBreweries) => {
+      res.json(allTheBreweries);
+    })
+    .catch((err)=> {
+      res.json(err);
+    });
+});
 
 // //One Brewery
 // breweryRouter.get('/breweries/:id', (req, res, next)=>{
@@ -50,7 +52,7 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
   const newBrewery = new Brewery({
     name: req.body.name,
     site: req.body.site,
-    // _id: new mongoose.Types.ObjectId()
+
   })
   newBrewery.save()
   .then((response)=>{
@@ -61,18 +63,13 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
       console.log('favBreweryy..........',foundUser.favBreweries)
       foundUser.save()
       .then(()=>{
-  
         res.json(response)
       })
-
       .catch(err => console.log(err))
-
     })
-
     .catch(err => res.json(err))
   })
   .catch(err => res.json(err))
-  
 });
 
 //edit
