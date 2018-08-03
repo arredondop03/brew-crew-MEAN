@@ -1,4 +1,43 @@
 const express     = require('express');
+<<<<<<< HEAD
+const router      = express.Router();
+const Review      = require ('../models/review.js');
+const User          = require('../models/user')
+const Brewery       = require('../models/brewery');
+
+
+// All reviews for that beer
+// router.get('/breweries/review', (req, res, next)=>{
+//   Brewery.findById(req.user.favBreweries[0])
+  
+//   .then((theBrewery)=>{
+//     res.json(theBrewery.review);
+//   })
+  
+//   .catch((err)=>{
+//     next(err);
+//   });
+// });
+
+
+//Create a review for that beer
+router.post('/review/create', (req, res, next)=>{
+  const newReview = {
+    author: req.body.author,
+    review: req.body.review
+  }
+
+  Brewery.findById(req.user.favBreweries[0])
+  .then((theBrewery)=>{
+    theBrewery.review.unshift(newReview)
+    theBrewery.save()
+    .then((response)=>{
+      res.json(response)
+    })
+    .catch((err)=>{
+      res.json(err)
+    })
+=======
 const reviewRouter      = express.Router();
 const Review      = require('../models/review');
 
@@ -32,29 +71,39 @@ reviewRouter.post('/review/:id/create', (req, res, next)=>{
       })
     })
     res.json(response);
+>>>>>>> 8f153afff5580b255b784a14f6a79a271d6f29b7
   })
   .catch((err)=>{
-    res.json(err);
-  });
-});
+    res.json(err)
+  })
+})
 
 //Edit your review
+<<<<<<< HEAD
+// router.get('/review/:id/edit', (req, res, next)=>{
+//   const id = req.params.id;
+=======
 reviewRouter.get('/review/:id/edit', (req, res, next)=>{
   const id = req.params.id;
+>>>>>>> 8f153afff5580b255b784a14f6a79a271d6f29b7
 
-  Review.findById(id)
-  .then((theReview)=>{
-    res.json(theReview);
-  })
-  .catch((err)=>{
-    res.json(err);
-  });
-});
+//   Brewery.findById(req.user.favBreweries[0])
+//   .then((theBrewery)=>{
+//     const theReview = theBrewery.review
+//   })
+//   .catch((err)=>{
+//     res.json(err);
+//   });
+// });
 
+<<<<<<< HEAD
+router.post('/breweries/review/:id/update', (req, res, next)=>{
+=======
 reviewRouter.post('/review/:id/update', (req, res, next)=>{
+>>>>>>> 8f153afff5580b255b784a14f6a79a271d6f29b7
   const id = req.params.id;
 
-  Review.findByIdUpdate(id, {
+  Brewery.findByIdUpdate(id, {
     review: req.body.review,
     rating: req.body.rating
   })
