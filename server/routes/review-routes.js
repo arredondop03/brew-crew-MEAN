@@ -1,14 +1,11 @@
 const express     = require('express');
 const router      = express.Router();
-const Review      = require ('../models/review.js');
+const Review      = require ('../models/review');
 const User          = require('../models/user')
 const Brewery       = require('../models/brewery');
 
-
-
 router.get('/breweries/review', (req, res, next)=>{
   Brewery.findById(req.user.favBreweries[0])
-
   .then((theBrewery)=>{
     res.json(theBrewery.review);
   })
@@ -17,29 +14,6 @@ router.get('/breweries/review', (req, res, next)=>{
     next(err);
   });
 });
-
-
-// //Create a review for that beer
-//The Bad one delete from all 
-// router.post('/review/create', (req, res, next)=>{
-//   const newReview = {
-//     author: req.body.author,
-//     review: req.body.review
-//   }
-
-//   Brewery.findById(req.user.favBreweries[0])
-//   .then((theBrewery)=>{
-//     theBrewery.review.unshift(newReview)
-//     theBrewery.save()
-//     .then((response)=>{
-//       res.json(response)
-//     })
-//     .catch((err)=>{
-//       res.json(err)
-//     })
-//   });
-// });
-
 
 //All reviews for that beer
 router.get('/review', (req, res, next)=>{
@@ -67,7 +41,7 @@ router.post('/review/:id/create', (req, res, next)=>{
       thatBeerFromDb.review.push(newReview._id);
       thatBeerFromDb.save();
       res.status(200).json({
-        // review: newReview,
+        review: newReview,
       })
     })
     res.json(response);
