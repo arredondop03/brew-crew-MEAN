@@ -15,12 +15,22 @@ reviewRouter.get('/review', (req, res, next)=>{
 });
 
 //Create a review for that beer
-reviewRouter.post('/review/create', (req, res, next)=>{
+reviewRouter.post('/review/:id/create', (req, res, next)=>{
   Review.create({
+    author: req.user._id,
     review: req.body.review,
     rating: req.body.rating
   })
-  .then((response)=>{
+  .then((newReview)=>{
+    Review.findById(newReview.review)
+    .then(reviewFromDb => {
+      reviewFromDb.reviews.push(newReview);
+      reviewFromDb.save();
+      res.status(200).json({
+        review: newReview,
+
+      })
+    })
     res.json(response);
   })
   .catch((err)=>{

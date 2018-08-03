@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const brewerySchema = new Schema({
-
   name: String,
   address: String,
   zip: String,
@@ -13,6 +12,7 @@ const brewerySchema = new Schema({
   promotion: {type: Schema.Types.ObjectId},
   hours: String,
   // coverCharge: String
+
 });
 
 
