@@ -27,23 +27,22 @@ router.get('/review', (req, res, next)=>{
 });
 
 //Create a review for that beer
-router.post('/review/:id/create', (req, res, next)=>{
-  Review.create({
+router.post('beers/:id/review/create', (req, res, next)=>{
+  const newReview = new Review({
     author: req.user._id,
     review: req.body.review,
     rating: req.body.rating,
     belongsToBeer: req.params.id
   })
+  newReview.save()
   .then((newReview)=>{
     Beer.findById(req.params.id)
     // Review.findById(newReview.review)
     .then(thatBeerFromDb => {
       thatBeerFromDb.review.push(newReview._id);
       thatBeerFromDb.save();
-      res.status(200).json({
-        review: newReview,
-      })
-    })
+      res.status(200).json(thatBeerFromDb)
+    });
     res.json(response);
   })
   .catch((err)=>{
@@ -53,27 +52,15 @@ router.post('/review/:id/create', (req, res, next)=>{
 
 //Edit your review
 
-router.get('/review/:id/edit', (req, res, next)=>{
-  const id = req.params.id;
-  Brewery.findById(req.user.favBreweries[0])
-  .then((theBrewery)=>{
-    const theReview = theBrewery.review
-  })
-  .catch((err)=>{
-    res.json(err);
-  });
-});
-
-
-router.post('/breweries/review/:id/update', (req, res, next)=>{
+router.post('/beers/:id/review/:reviewid/edit', (req, res, next)=>{
   const id = req.params.id;
 
-  Brewery.findByIdUpdate(id, {
+  Review.findByIdUpdate(id, {
     review: req.body.review,
     rating: req.body.rating
   })
   .then((theReview)=>{
-    res.json('review' +theReview._id);
+    res.json(theReview);
   })
   .catch((err)=>{
     res.json(err);

@@ -7,7 +7,7 @@ const beerSchema = new Schema({
   description: String,
   alchContent: String,
   price: String,
-  review: {type: Schema.Types.ObjectId, ref: "Review"}
+  review: [{type: Schema.Types.ObjectId, ref: "Review"}]
 });
 
 const Beer = mongoose.model("Beer", beerSchema);
