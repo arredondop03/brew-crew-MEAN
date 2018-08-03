@@ -43,15 +43,15 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     alchContent: req.body.alchContent,
-    price: req.body.price
+    price: req.body.price,
   });
   newBeer.save()
     .then((response) => {
       console.log("I am the new Beer", response);
-      Brewery.findById(req.brewery._id)
+      Brewery.findById(req.params.id)
       .then(thatBrewery => {
-        console.log("Say Hello ", req.brewery._id);
-          thatBrewery.itsBeerArray.push(response._id);
+        console.log("Say Hello ", thatBrewery);
+          thatBrewery.beers.push(response._id);
           console.log("Let's get that Beer", thatBrewery);
           thatBrewery.save()
           .then(()=>{

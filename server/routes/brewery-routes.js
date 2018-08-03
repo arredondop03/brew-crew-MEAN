@@ -78,7 +78,6 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
     phone: req.body.phone,
     site: req.body.site,
     hours: req.body.hours,
-    // _id: new mongoose.Types.ObjectId()
   })
   newBrewery.save()
   .then((response)=>{
@@ -103,7 +102,6 @@ breweryRouter.post('/breweries/create', (req, res, next) => {
   .catch(err => res.json(err))
 
 });
-
 
 // Brewery.create({
 //   name: req.body.name,
@@ -146,7 +144,7 @@ breweryRouter.post('/breweries/:id/edit', (req, res, next)=>{
     zip: req.body.zip,
     phone: req.body.phone,
     site: req.body.site,
-    // beers: req.body.beers,
+    beers: req.body.beers,
     promotion: req.body.promotion,
     hours: req.body.hours,
     coverCharge: req.body.coverCharge
