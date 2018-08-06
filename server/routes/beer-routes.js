@@ -79,7 +79,7 @@ beerRouter.get('/beers/:id', (req, res, next)=>{
   Beer.findById(req.params.id)
   .then((response)=>{
     res.json(response)
-  })
+  
   .catch((err)=>{
     res.json(err);
   });
