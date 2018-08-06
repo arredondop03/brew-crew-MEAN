@@ -77,12 +77,13 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
 //works
 beerRouter.get('/beers/:id', (req, res, next)=>{
   Beer.findById(req.params.id)
-  .then((response)=>{
-    res.json(response)
-  
-  .catch((err)=>{
-    res.json(err);
-  });
+    .then((response)=>{
+      res.json(response)
+
+    .catch((err)=>{
+      res.json(err);
+    });
+  })
 });
 
 //route for editing a beer and descriptions etc.
