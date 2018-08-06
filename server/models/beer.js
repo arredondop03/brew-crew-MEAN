@@ -20,12 +20,9 @@ const beerSchema = new Schema({
   description: String,
   alchContent: String,
   price: String,
-  review:  [{type: reviewSchema }]
+  review: [{type: Schema.Types.ObjectId}]
 });
 
 const Beer = mongoose.model("Beer", beerSchema);
 
 module.exports = Beer;
-
-
-
