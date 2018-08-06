@@ -7,8 +7,8 @@ import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http';
-import { InfoComponent } from './info/info/info.component';
- 
+import { InfoComponent } from './info/info.component';
+
 const routes: Routes = [
   { path: '', component: UserComponent}
 ]
