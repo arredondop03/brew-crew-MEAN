@@ -8,10 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http';
 import { InfoComponent } from './info/info.component';
+import { InfoService } from './services/info.service';
 
 const routes: Routes = [
   { path: '', component: UserComponent}
-]
+];
 
 @NgModule({
   declarations: [

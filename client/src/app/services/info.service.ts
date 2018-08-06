@@ -56,11 +56,6 @@ export class InfoService {
     .catch(this.handleError)
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 1d3b7901d8e3cc31cddb4ebcb47e66b797bf3627
   oneBeer(theBreweryID){
     return this.http.get('http://localhost:3000/api/breweries/' + theBreweryID + '/beers', theBreweryID)
     .map((res) => res.json())
@@ -73,11 +68,6 @@ export class InfoService {
     .catch(this.handleError)
   }
 
-<<<<<<< HEAD
-
-=======
-=======
->>>>>>> 1d3b7901d8e3cc31cddb4ebcb47e66b797bf3627
   //Reviews Section
   breweryReviews(){
     return this.http.get('http://localhost:3000/api/breweries/review')
@@ -108,9 +98,5 @@ export class InfoService {
     .map(res => res.json())
     .catch(this.handleError)
   }
-<<<<<<< HEAD
->>>>>>> e9764aa00b06e95483005a5257600fc101c3b620
-=======
 
->>>>>>> 1d3b7901d8e3cc31cddb4ebcb47e66b797bf3627
 }
