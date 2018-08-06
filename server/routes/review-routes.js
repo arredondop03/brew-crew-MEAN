@@ -3,6 +3,7 @@ const router      = express.Router();
 const Review      = require ('../models/review');
 const User          = require('../models/user')
 const Brewery       = require('../models/brewery');
+const Beer         = require('../models/beer');
 
 router.get('/breweries/review', (req, res, next)=>{
   Brewery.findById(req.user.favBreweries[0])
@@ -27,23 +28,24 @@ router.get('/review', (req, res, next)=>{
 });
 
 //Create a review for that beer
-router.post('beers/:id/review/create', (req, res, next)=>{
+router.post('/beers/:id/review/create', (req, res, next)=>{
   const newReview = new Review({
-    author: req.user._id,
+    author: req.user.id,
     review: req.body.review,
     rating: req.body.rating,
     belongsToBeer: req.params.id
   })
   newReview.save()
   .then((newReview)=>{
+    console.log("this is the req params=============== ", req.params.id)
     Beer.findById(req.params.id)
-    // Review.findById(newReview.review)
-    .then(thatBeerFromDb => {
+    .then((thatBeerFromDb) => {
+      console.log("THE BEER THAT IS HERE------------", thatBeerFromDb);
       thatBeerFromDb.review.push(newReview._id);
       thatBeerFromDb.save();
       res.status(200).json(thatBeerFromDb)
-    });
-    res.json(response);
+    })
+    // res.json(response);
   })
   .catch((err)=>{
     res.json(err)
@@ -51,32 +53,31 @@ router.post('beers/:id/review/create', (req, res, next)=>{
 })
 
 //Edit your review
-
-router.post('/beers/:id/review/:reviewid/edit', (req, res, next)=>{
-  const id = req.params.id;
-
-  Review.findByIdUpdate(id, {
+router.post('/beers/:id/review/:reviewid/edit', (req, res, next) => {
+  Review.findByIdAndUpdate(req.params.reviewid, {
     review: req.body.review,
-    rating: req.body.rating
+    rating: req.body.rating,
   })
-  .then((theReview)=>{
-    res.json(theReview);
+  .then((response) => {
+    res.json(response)
   })
-  .catch((err)=>{
-    res.json(err);
+  .catch((err) => {
+    next(err);
   });
 });
 
-//Delete said review
-router.delete('/review/:id/remove', (req, res, next) => {
-  const id = req.params.id;
 
+
+
+//Delete said review
+router.delete('/beers/:id/review/:reviewid/delete', (req, res, next) => {
+  const id = req.params.reviewid;
   Review.findByIdAndRemove(id)
   .then((response)=>{
     res.json(response)
   })
   .catch((err)=>{
-    res.json(err);
+    next(err);
   });
 });
 

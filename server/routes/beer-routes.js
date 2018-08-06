@@ -17,7 +17,7 @@ beerRouter.get('/beers', (req, res, next) => {
 });
 
 
-//Beers from that one brewery    
+//Beers from that one brewery
 beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
   const id = req.params.id;
 
@@ -73,7 +73,7 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
       });
     });
 
-//That special drink 
+//That special drink
 //works
 beerRouter.get('/beers/:id', (req, res, next)=>{
   Beer.findById(req.params.id)
