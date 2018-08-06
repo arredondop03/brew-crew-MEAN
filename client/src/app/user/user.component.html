@@ -2,7 +2,6 @@
   User: {{theActualUser | json}}
 </div>
 
-
 <button (click)="loggingOut()">Log Out</button>
 
 <button (click)="checkIsLoggedIn()">check if logged in </button>
@@ -22,9 +21,7 @@
 </form>
 
 
-
 <hr>
-
 <h2>Login Form</h2>
 
 <form (submit)="logIn()">
@@ -39,5 +36,5 @@
   <button>Login</button>
 </form>
 
-
 <div *ngIf="theError">error: {{theError}}</div>
+
