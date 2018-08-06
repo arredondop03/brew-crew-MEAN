@@ -15,7 +15,7 @@ router.get('/breweries/review', (req, res, next)=>{
   });
 });
 
-<<<<<<< HEAD
+
 
 //Create a review for that beer
 router.post('/review/create', (req, res, next)=>{
@@ -24,7 +24,7 @@ router.post('/review/create', (req, res, next)=>{
     review: req.body.review
   }
 
-  Brewery.findById(req.user.favBreweries[0])
+  Beer.findById(req.user.myBrewery)
   .then((theBrewery)=>{
     theBrewery.review.unshift(newReview)
     theBrewery.save()
@@ -34,14 +34,11 @@ router.post('/review/create', (req, res, next)=>{
     .catch((err)=>{
       res.json(err)
     })
-<<<<<<< HEAD
-=======
   });
 });
 
 
-=======
->>>>>>> e0340bdcf19e9b5a28878898aed6f63a7d50d315
+
 //All reviews for that beer
 router.get('/review', (req, res, next)=>{
   Review.find()
@@ -72,7 +69,6 @@ router.post('/review/:id/create', (req, res, next)=>{
       })
     })
     res.json(response);
->>>>>>> c738d0e2b4d5503e13253714320b8b01a804f84f
   })
   .catch((err)=>{
     res.json(err)
@@ -80,19 +76,6 @@ router.post('/review/:id/create', (req, res, next)=>{
 })
 
 //Edit your review
-<<<<<<< HEAD
-// router.get('/review/:id/edit', (req, res, next)=>{
-//   const id = req.params.id;
-
-//   Brewery.findById(req.user.favBreweries[0])
-//   .then((theBrewery)=>{
-//     const theReview = theBrewery.review
-//   })
-//   .catch((err)=>{
-//     res.json(err);
-//   });
-// });
-=======
 
 router.get('/review/:id/edit', (req, res, next)=>{
   const id = req.params.id;
@@ -105,7 +88,6 @@ router.get('/review/:id/edit', (req, res, next)=>{
   });
 });
 
->>>>>>> c738d0e2b4d5503e13253714320b8b01a804f84f
 
 router.post('/breweries/review/:id/update', (req, res, next)=>{
   const id = req.params.id;
@@ -135,8 +117,6 @@ router.delete('/review/:id/remove', (req, res, next) => {
   });
 });
 
-<<<<<<< HEAD
+
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> c738d0e2b4d5503e13253714320b8b01a804f84f
+
