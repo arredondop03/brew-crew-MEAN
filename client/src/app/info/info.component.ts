@@ -17,40 +17,40 @@ export class InfoComponent implements OnInit {
   constructor(private theService: InfoService) { }
 
   addNewBeer(){
-    this.theService.addNewBeer(this.theNewBeerEntry)
+    this.theService.createBeer(this.theNewBeerEntry)
     .subscribe((response)=>{
       this.theNewBeerEntry = {};
-      this.getBeerEntries();
+      this.allBeers();
       console.log('This======>' + response + "<==== was added into the collection")
     });
   }
 
   addNewBrewery(){
-    this.theService.addNewBrewery(this.theNewBreweryEntry)
+    this.theService.createBrewery(this.theNewBreweryEntry)
     .subscribe((response)=>{
       this.theNewBreweryEntry = {};
-      this.getBreweryEntries();
+      this.allBreweries();
       console.log('This======>' + response + "<==== was added into the collection")
     });
   }
 
-  getBeerEntries(){
-    this.theService.getBeerEntries()
+  allBeers(){
+    this.theService.allBeers()
     .subscribe((res)=>{
       this.beers = res;
     });
   }
 
-  getBreweryEntries(){
-    this.theService.getBreweryEntries()
+  allBreweries(){
+    this.theService.allBreweries()
     .subscribe((res)=>{
       this.breweries = res;
     });
   }
 
   ngOnInit() {
-    this.getBeerEntries();
-    this.getBreweryEntries();
+    this.allBeers();
+    this.allBreweries();
   }
 
 }

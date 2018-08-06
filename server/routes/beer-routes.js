@@ -20,10 +20,6 @@ beerRouter.get('/beers', (req, res, next) => {
 //Beers from that one brewery
 beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
   const id = req.params.id;
-
-  // Brewery.findById(id)
-  // .then((breweryFromBD) =>{
-  //   console.log('This is the Brewery', breweryFromBD);
     Beer.find({brewery: id})
     .then((beersFromDB)=>{
       console.log('The beer from the Database', beersFromDB);
@@ -32,10 +28,6 @@ beerRouter.get('/breweries/:id/beers', (req, res, next)=>{
     .catch((err)=>{
       res.json(err);
     });
-  // })
-  // .catch((err)=>{
-  //   res.json(err);
-  // });
 });
 
 
