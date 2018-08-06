@@ -44,4 +44,6 @@ export class InfoService {
     .map(res => res.json())
     .catch(this.handleError)
   }
+
+  
 }
