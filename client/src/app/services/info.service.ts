@@ -68,7 +68,7 @@ export class InfoService {
     .catch(this.handleError)
   }
 
-  //Reviews Section
+  //Reviews Section-------------------------------------------------------------------------
   breweryReviews(){
     return this.http.get('http://localhost:3000/api/breweries/review')
     .map(res => res.json())
