@@ -46,7 +46,8 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
     description: req.body.description,
     alchContent: req.body.alchContent,
     price: req.body.price,
-    brewery: req.params.id
+    brewery: req.params.id,
+    review: req.body.review
   });
   newBeer.save()
     .then((response) => {

@@ -1,3 +1,14 @@
-<p>
-  user works!
-</p>
+
+<div *ngIf="theActualUser.username">
+  User: {{theActualUser.username | json}}
+</div>
+
+<h2>SignUp</h2>
+<form (submit)="signingUp()">
+  <label>Username</label>
+  <input type="text" name="theUsername" [(ngModel)]="signUpUser.username">
+
+  <label>Password</label>
+  <input type="text" name="thePassword" [(ngModel)]="signUpUser.password">
+  <button>Register Account</button>
+</form>
