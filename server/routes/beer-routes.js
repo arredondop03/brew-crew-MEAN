@@ -84,6 +84,7 @@ beerRouter.get('/beers/:id', (req, res, next)=>{
     res.json(err);
   });
 });
+});
 
 //route for editing a beer and descriptions etc.
 beerRouter.post('/breweries/:id/beers/edit/:beerid', (req, res, next)=>{
