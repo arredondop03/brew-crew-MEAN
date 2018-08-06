@@ -7,7 +7,6 @@ const userSchema = new Schema({
   email: String,
   password: String,
   username: String,
-  // role: {type:String, enum: USERROLES },
   reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
   // userImage: String,
   // barCrawlLoc:[{type: Schema.Types.ObjectId}]
