@@ -1,18 +1,10 @@
-
 <div *ngIf="theActualUser.username">
-  User: {{theActualUser.username | json}}
+  User: {{theActualUser | json}}
 </div>
 
-<h2>SignUp</h2>
-<form (submit)="signingUp()">
-  <label>Username</label>
-  <input type="text" name="theUsername" [(ngModel)]="signUpUser.username">
+<button (click)="loggingOut()">Log Out</button>
 
-  <label>Password</label>
-  <input type="text" name="thePassword" [(ngModel)]="signUpUser.password">
-  <button>Register Account</button>
-</form>
-
+<<<<<<< HEAD
 
 
 <form (submit)="loggingIn()">
@@ -24,38 +16,39 @@
 <button (click)="logMeOut()">Log Out</button>
 
 <button (click)="checkIfLoggedIn()">check if logged in </button>
+=======
+<button (click)="checkIsLoggedIn()">check if logged in </button>
+>>>>>>> a725193ac3ef1c92f729954c862d6c63fb8cb9ac
 
 <h2>Signup Form</h2>
 
-<form (submit)="tryToSignUp()">
+<form (submit)="SignUp()">
 
   <label>Username</label>
-  <input [(ngModel)]="signUpUser.username" name="blah" type="text">
+  <input [(ngModel)]="signUpUser.username" name="theUsername" type="text">
 
   <label>Password</label>
-  <input [(ngModel)]="signUpUser.password" name="blah" type="text">
+  <input [(ngModel)]="signUpUser.password" name="thePassword" type="text">
 
 
   <button>Complete Registration</button>
 </form>
 
 
-
 <hr>
+<h2>Login Form</h2>
 
-<h2>Login Form</h2> -->
-
-<!-- <form (submit)="tryToLogIn()">
+<form (submit)="logIn()">
 
   <label>Username</label>
-  <input [(ngModel)]="loginUser.username" name="blah" type="text">
+  <input [(ngModel)]="loginUser.username" name="theLoginUsername" type="text">
 
   <label>Password</label>
-  <input [(ngModel)]="loginUser.password" name="blah" type="text">
+  <input [(ngModel)]="loginUser.password" name="theLoginPassword" type="text">
 
 
   <button>Login</button>
 </form>
 
+<div *ngIf="theError">error: {{theError}}</div>
 
-<div *ngIf="theError">error: {{theError}}</div> -->
