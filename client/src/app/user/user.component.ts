@@ -9,7 +9,7 @@ import { AuthService }       from '../services/auth.service';
 })
 
 export class UserComponent implements OnInit {
-
+  signupForm: boolean = false
   signUpUser:any = {};
 
   theActualUser:any = {};
@@ -60,6 +60,10 @@ export class UserComponent implements OnInit {
       res => {this.successCallback(res)},
       err => {this.errorCallback(null)}
     )
+  }
+
+  showSignupOptions(){
+    this.signupForm = !this.signupForm
   }
 
   ngOnInit() {
