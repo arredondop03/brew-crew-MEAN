@@ -11,11 +11,8 @@ import { AuthService }       from '../services/auth.service';
 export class UserComponent implements OnInit {
 
   signUpUser:any = {};
-
   theActualUser:any = {};
-
   loginUser:any = {};
-
   theError:any;
 
   constructor(private authService: AuthService) { }
