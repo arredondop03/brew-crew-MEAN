@@ -39,7 +39,7 @@ const routes: Routes = [
     UserComponent,
     HomeComponent,
     SignupUserComponent,
-    LoginUserComponent,
+    LoginUserComponent, 
     BeerComponent,
     BreweryComponent,
     ReviewComponent,
