@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReviewService } from '../services/review.service'
 
 @Component({
   selector: 'app-review',
@@ -7,9 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewComponent implements OnInit {
 
-  constructor() { }
+  beerReview: any;
+  // beerEntry: any = {};
+  newReview: any = {};
+  userReview: any = {};
 
+  constructor(private viewService: ReviewService) { }
+  ngModelngModelngModel
   ngOnInit() {
+    this.thatBeerReview()
   }
 
+  thatBeerReview(){
+    console.log(this.beerReview)
+    this.viewService.beerReview()
+    .subscribe((res) =>{
+      this.beerReview = res.reverse();
+    })
+  }
+
+  aNewReview(){
+    // console.log(this.beerReview)
+    this.viewService.addReview()
+    .subscribe((res) =>{
+      this.thatBeerReview()
+    })
+  }
+
+  changeReview(){
+    this.viewService.editReview()
+    .subscribe()
+  }
+
+  deleteReview(){
+    this.viewService.removeReview()
+    .subscribe(
+      (res) => {this.beerReview = {}
+    })
+  }
 }

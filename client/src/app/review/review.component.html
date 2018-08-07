@@ -1,3 +1,23 @@
-<p>
-  review works!
-</p>
+
+<div *ngFor = "let view of beerReview">
+
+  <p>Author: {{view.author}}</p>
+  <p><i>"{{view.review}}"</i></p>
+  <p>Rating: {{view.rating}}</p>
+
+  <button (click)="changeReview(newReview)">Edit Review</button>
+  <button (click)="deleteReview()">Delete Review</button>
+
+</div>
+
+<button (click)="aNewReview()">Leave a Review</button>
+
+<form (submit)="aNewReview()">
+  <label>Review</label>
+  <textarea name="blah" id="blah" cols="30" rows="10" maxlength="150" [(ngModel)]="userReview.review"></textarea>
+
+  <label>Rating</label>
+  <input type="number" name="blah" id="blah">
+
+  <button>Add Review</button>
+</form>
