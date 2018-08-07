@@ -1,3 +1,12 @@
-<p>
-  brewery works!
-</p>
+<h1>List of Breweries</h1>
+
+<h2>We should iterate over Breweries</h2>
+<div *ngFor="let aBrewery of breweries">
+  <h2>{{aBrewery.name}}</h2>
+  <p>{{aBrewery.address}}</p>
+  <p>{{aBrewery.city}}</p>
+  <p>{{aBrewery.state}}</p>
+  <p>{{aBrewery.zip}}</p>
+  <p>{{aBrewery.phone}}</p>
+  <p>{{aBrewery.site}}</p>
+</div>
