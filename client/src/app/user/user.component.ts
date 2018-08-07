@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
 
   loggingOut(){
     this.authService.logout()
-    .subscribe(Res => {this.theActualUser = {}})
+    .subscribe(res => {this.theActualUser = {}})
   }
 
   successCallback(userObject){

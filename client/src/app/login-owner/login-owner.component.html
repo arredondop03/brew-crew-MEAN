@@ -1,5 +1,5 @@
 
-<h2>Login as a user </h2>
+<h2>Login as an owner</h2>
 <form (submit)="loggingIn()"  >
 
   <label> Username</label>
@@ -12,4 +12,6 @@
 
 </form>
 
-<p>Don't have account? <a [routerLink]="['/signup']">Sign Up</a></p>
+<div *ngIf="theError">
+  {{theError}}
+</div>

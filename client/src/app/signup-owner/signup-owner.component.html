@@ -1,0 +1,13 @@
+<h2>SignUp as a Brewery owner</h2>
+<form (submit)="signingUp()">
+  <label>Username</label>
+  <input type="text" name="theUsername" [(ngModel)]="signUpUser.username">
+
+  <label>Password</label>
+  <input type="text" name="thePassword" [(ngModel)]="signUpUser.password">
+  <button>Register Account</button>
+</form>
+
+<div *ngIf="theError">
+  {{theError}}
+</div>
