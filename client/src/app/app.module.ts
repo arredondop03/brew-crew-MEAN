@@ -31,7 +31,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, BeerService, BreweryService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
