@@ -26,7 +26,10 @@ import { HttpModule } from '@angular/http';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent}
+  { path: '', component: HomeComponent},
+  { path: 'signup', component: SignupUserComponent},
+  { path: 'login', component: LoginUserComponent}
+
 ];
 
 

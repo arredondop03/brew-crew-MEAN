@@ -7,30 +7,30 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  loginUser: boolean = false
-  loginOwner: boolean = false
-  signupUser: boolean = false
-  signupOwner: boolean = false
+  logIn: boolean = false
+  signUp: boolean = false
   theActualUser:any = {};
+  buttons: boolean = true
 
 
   constructor(private authService: AuthService) { }
 
-  showLoginUser(){
-    this.loginUser = !this.loginUser
+  showSignup(){
+    this.signUp = !this.signUp
   }
 
-  showSignupUser(){
-    this.signupUser = !this.signupUser
+  showLogin(){
+    this.logIn = !this.logIn
   }
 
-  showLoginOwner(){
-    this.loginOwner = !this.loginOwner
+  disappearButtons(){
+    this.buttons = !this.buttons
   }
 
-  showSignupOwner(){
-    this.signupOwner = !this.signupOwner
+  reloadPage(){
+    location.reload();
   }
+
 
   loggingOut(){
 
