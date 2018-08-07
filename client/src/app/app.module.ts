@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
+import { BeerService } from './services/beer.service';
+import { BreweryService } from './services/brewery.service';
+import { ReviewService } from './services/review.service';
 import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http';
-import { InfoComponent } from './info/info.component';
-import { InfoService } from './services/info.service';
+import { BeerComponent } from './beer/beer.component';
+import { BreweryComponent } from './brewery/brewery.component';
+import { ReviewComponent } from './review/review.component';
 
 const routes: Routes = [
   { path: '', component: UserComponent}
@@ -18,7 +21,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     UserComponent,
-    InfoComponent
+    BeerComponent,
+    BreweryComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
