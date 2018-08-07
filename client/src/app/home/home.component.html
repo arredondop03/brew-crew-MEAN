@@ -1,0 +1,27 @@
+<button (click)="showSignupOwner()">Signup as owner</button>
+<button (click)="showSignupUser()">Signup as user</button>
+
+
+<br><br><br>
+
+<button (click)="showLoginOwner()">Login as owner</button>
+<button (click)="showLoginUser()">Login as user</button>
+
+<div *ngIf="signupUser">
+    <app-signup-user></app-signup-user>
+</div>
+
+<div *ngIf="loginUser">
+    <app-login-user></app-login-user>
+</div>
+
+<div *ngIf="signupOwner">
+    <app-signup-owner></app-signup-owner>
+</div>
+
+<div *ngIf="loginOwner">
+    <app-login-owner></app-login-owner>
+</div>
+
+<br><br>
+<button (click)="loggingOut()" > Log Out </button>

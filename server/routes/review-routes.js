@@ -16,6 +16,30 @@ router.get('/breweries/review', (req, res, next)=>{
   });
 });
 
+
+
+//Create a review for that beer
+router.post('/review/create', (req, res, next)=>{
+  const newReview = {
+    author: req.body.author,
+    review: req.body.review
+  }
+
+  Beer.findById(req.user.myBrewery)
+  .then((theBrewery)=>{
+    theBrewery.review.unshift(newReview)
+    theBrewery.save()
+    .then((response)=>{
+      res.json(response)
+    })
+    .catch((err)=>{
+      res.json(err)
+    })
+  });
+});
+
+
+
 //All reviews for that beer
 router.get('/review', (req, res, next)=>{
   Review.find()
@@ -81,4 +105,6 @@ router.delete('/beers/:id/review/:reviewid/delete', (req, res, next) => {
   });
 });
 
+
 module.exports = router;
+

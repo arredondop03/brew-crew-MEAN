@@ -11,7 +11,7 @@ const brewerySchema = new Schema({
   phone: String,
   site: String,
   beers: [{type: Schema.Types.ObjectId, ref: 'Beer'}],
-  review: [{type: Schema.Types.ObjectId, ref: 'Review'}],
+  
   promotion: {type: Schema.Types.ObjectId},
   hours: String,
   // coverCharge: String
