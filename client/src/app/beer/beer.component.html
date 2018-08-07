@@ -21,12 +21,24 @@
 
 <hr />
 <h2>We can iterate over beers</h2>
-<div *ngFor="let aBeer of beers">
-  <h2>{{aBeer.name}}</h2>
-  <p> {{aBeer.description}}</p>
-  <p> {{aBeer.alchContent}}</p>
-  <p> {{aBeer.price}}</p>
-  <a [routerLink]="['beers', aBeer._id]">See Details</a>
+<div class ="" *ngFor="let aBeer of beers">
+  <div class="">
+    <div class="">
+      <h2>{{aBeer.name}}</h2>
+      <div class="">
+        <p> {{aBeer.description}}</p>
+        <p> {{aBeer.alchContent}}</p>
+        <p> {{aBeer.price}}</p>
+        <a [routerLink]="['beers', aBeer._id]">See Details</a>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
 
 <!--No ngModel created here becuase the reviews are made elsewhere?  -->
