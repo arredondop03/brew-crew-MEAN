@@ -7,15 +7,25 @@ import { UserComponent } from './user/user.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http';
+import { HomeComponent } from './home/home.component';
+import { SignupUserComponent } from './signup-user/signup-user.component';
+import { SignupOwnerComponent } from './signup-owner/signup-owner.component';
+import { LoginOwnerComponent } from './login-owner/login-owner.component';
+import { LoginUserComponent } from './login-user/login-user.component';
  
 const routes: Routes = [
-  { path: '', component: UserComponent}
+  { path: '', component: HomeComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    HomeComponent,
+    SignupUserComponent,
+    SignupOwnerComponent,
+    LoginOwnerComponent,
+    LoginUserComponent
   ],
   imports: [
     BrowserModule,
