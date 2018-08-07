@@ -7,3 +7,7 @@
   <input type="text" name="thePassword" [(ngModel)]="signUpUser.password">
   <button>Register Account</button>
 </form>
+
+<div *ngIf="theError">
+  {{theError}}
+</div>

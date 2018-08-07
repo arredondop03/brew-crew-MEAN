@@ -36,7 +36,7 @@ const routes: Routes = [
     SignupUserComponent,
     SignupOwnerComponent,
     LoginOwnerComponent,
-    LoginUserComponent
+    LoginUserComponent,
     BeerComponent,
     BreweryComponent,
     ReviewComponent
