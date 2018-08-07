@@ -1,0 +1,28 @@
+<h2>Welcome to the Info Component Portion</h2>
+
+<!--Creating a Portion for the User to add a New Beer/still missing buttons and a nicer layout  -->
+<label>Beer Name: </label>
+<input [(ngModel)]="theNewBeerEntry.name" name="theName" type="text"/>
+
+<label>Brewery: </label>
+<input [(ngModel)]="theNewBeerEntry.brewery" name="theBrewery" type="text"/>
+
+<label>Beer Description: </label>
+<input [(ngModel)]="theNewBeerEntry.description" name="theDescription" type="text" />
+
+<label>Alcohol Content: </label>
+<input [(ngModel)]="theNewBeerEntry.alchContent" name="theAlcoholContent" type="text" />
+
+<label>Price: </label>
+<input [(ngModel)]="theNewBeerEntry.price" name="thePrice" type="text" />
+
+<hr />
+<div *ngFor="let aBeer of beers">
+  <h2>{{aBeer.name}}</h2>
+  <p> {{aBeer.description}}</p>
+  <p> {{aBeer.alchContent}}</p>
+  <p> {{aBeer.price}}</p>
+  <a [routerLink]="['beers', aBeer._id]">See Details</a>
+</div>
+
+<!--No ngModel created here becuase the reviews are made elsewhere?  -->
