@@ -10,6 +10,7 @@ export class SignupUserComponent implements OnInit {
   signUpUser:any = {};
   theActualUser:any = {};
   theError:any;
+  
 
   constructor(private authService: AuthService) { }
   successCallback(userObject){

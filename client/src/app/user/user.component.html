@@ -51,14 +51,14 @@ nfvnfvch
 
 <button (click)="loggingOut()">Log Out</button>
 
-<button (click)="checkIfLoggedIn()">check if logged in </button>
+<button (click)="checkIsLoggedIn()">check if logged in </button>
 
 
 
 
 <h2>Signup Form</h2>
 
-<form (submit)="SignUp()">
+<form (submit)="signingUp()">
 
   <label>Username</label>
   <input [(ngModel)]="signUpUser.username" name="theUsername" type="text">
@@ -74,7 +74,7 @@ nfvnfvch
 <hr>
 <h2>Login Form</h2>
 
-<form (submit)="logIn()">
+<form (submit)="loggingIn()">
 
   <label>Username</label>
   <input [(ngModel)]="loginUser.username" name="theLoginUsername" type="text">

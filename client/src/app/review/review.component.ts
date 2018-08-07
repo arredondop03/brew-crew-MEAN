@@ -14,7 +14,7 @@ export class ReviewComponent implements OnInit {
   userReview: any = {};
 
   constructor(private viewService: ReviewService) { }
-  ngModelngModelngModel
+
   ngOnInit() {
     this.thatBeerReview()
   }
@@ -42,8 +42,7 @@ export class ReviewComponent implements OnInit {
 
   deleteReview(){
     this.viewService.removeReview()
-    .subscribe(
-      (res) => {this.beerReview = {}
+    .subscribe((res) => {this.beerReview = {}
     })
   }
 }
