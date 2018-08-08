@@ -76,33 +76,15 @@ beerRouter.get('/beers/:id', (req, res, next)=>{
   };
   Beer.findById(req.params.id)
     .then((theBeer)=>{
-      Review.find({belongsToBeer: theBeer._id})
+      Review.find({belongsToBeer: theBeer._id}).populate('author')
       .then(allReviews => {
         console.log(allReviews)
         data.beerInfo = theBeer;
         data.theReviews.push(allReviews);
-        console.log('the rev: ', data)
+        console.log('the rev: ', data.theReviews)
         res.json(data)
       })
-      .catch()
-
-
-      // data.beerInfo = theBeer;
-      // theBeer.review.forEach( oneRewId => {
-      //   console.log('rew id:', oneRewId )
-      //   Review.findById(oneRewId)
-      //   .then( foundReview => {
-      //     console.log("found:", foundReview )
-      //     reviews.push(foundReview);
-      //   } )
-      //   .catch( err => res.json(err) )
-        
-      // } )
-      // data.theR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 eviews.push(reviews);
-      // console.log('data is: ', data)
-      res.json(data)
-
-      
+      .catch(err => res.json(err))      
     .catch((err)=>{
       res.json(err);
     });

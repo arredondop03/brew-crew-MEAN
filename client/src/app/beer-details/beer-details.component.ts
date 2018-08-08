@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BeerDetailsComponent implements OnInit {
   thatBeer: any;
+  thoseReviews: any = [];
 
   
 
@@ -25,8 +26,8 @@ export class BeerDetailsComponent implements OnInit {
   beerDetails(beerId){
     this.theService.oneBeer(beerId)
     .subscribe((res)=>{
-      console.log('beer is: ', res)
-      this.thatBeer = res;
+      this.thatBeer = res.beerInfo;
+      this.thoseReviews = res.theReviews;
       // this.thatBeer.review.forEach(oneRewId => {
 
       // })

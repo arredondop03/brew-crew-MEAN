@@ -30,8 +30,9 @@ export class ReviewService {
     .catch(this.handleError)
   }
 
-  addReview(beerId){
-    return this.http.post(`http://localhost:3000/api/beers/${beerId}/review/create`, {withCredentials: true})
+  addReview(beerId, data){
+    console.log('service: ', beerId, 'data: +++++++ ', data)
+    return this.http.post(`http://localhost:3000/api/beers/${beerId}/review/create`, data, {withCredentials: true})
     .map(res => res.json())
     .catch(this.handleError)
   }
