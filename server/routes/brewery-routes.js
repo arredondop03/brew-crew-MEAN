@@ -32,30 +32,38 @@ breweryRouter.get('/breweries/:id', (req, res, next)=>{
 //Create a brewery
 breweryRouter.post('/breweries/create', (req, res, next) => {
   const newBrewery = new Brewery({
-    name: req.body.name,
-    address: req.body.address,
-    city:    req.body.city,
-    state:   req.body.state,
-    zip:     req.body.zip,
-    phone: req.body.phone,
-    site: req.body.site,
-    hours: req.body.hours,
-    beers: req.body.beers
+    name:         req.body.name,
+    address:      req.body.address,
+    city:         req.body.city,
+    state:        req.body.state,
+    zip:          req.body.zip,
+    phone:        req.body.phone,
+    site:         req.body.site,
+    hours:        req.body.hours,
+    beers:        req.body.beers
   })
   
   newBrewery.save()
   .then((response)=>{
-    console.log(response)
-    User.findById(req.user._id)
-      foundUser.myBrewery.unshift(response._id)
-      console.log('Creating the User\'s Brewery..........',foundUser.myBrewery)
+
+    let theID
+    if(req.user){
+      theID = req.user._id
+    } else{
+      theID=req.body.userId
+    }
+    User.findById(theID)
+    .then((foundUser)=>{
+      foundUser.myBrewery = (response._id)
       foundUser.save()
       .then(()=>{
-        res.json(response)
+      res.json(response)
       })
-      .catch(err => console.log(err))
-      })
-    .catch(err => res.json(err))
+      .catch(err => (err))
+    })
+    .catch(err => (err))
+    })
+  .catch(err => res.json(err)) 
   })
 
 
@@ -100,14 +108,7 @@ breweryRouter.post('/breweries/:id/delete', (req, res, next)=>{
     Beer.remove({_id: {$in: breweryFromDB.beers}})
     .then((beerFromDB)=>{
       console.log('Results from DB from delete beer', beerFromDB)
-      // if (beerFromDB === null) {
-      //   res.status(400).json({message: "Beer not found"})
-      // }
-      // else {
-      //   res.status(200).json(beerFromDB)
-      // }
       Brewery.remove({_id: breweryFromDB._id})
-      // res.status(200).json({message: "Nice it's goooone"})
       .then((brewFromDB)=>{
         console.log('Results from DB from delete brewery', brewFromDB)
         if (brewFromDB === null) {

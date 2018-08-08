@@ -15,8 +15,6 @@ import { ReviewComponent } from './review/review.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { SignupUserComponent } from './signup-user/signup-user.component';
-import { SignupOwnerComponent } from './signup-owner/signup-owner.component';
-import { LoginOwnerComponent } from './login-owner/login-owner.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 
 import { FormsModule } from '@angular/forms';
@@ -40,8 +38,6 @@ const routes: Routes = [
     UserComponent,
     HomeComponent,
     SignupUserComponent,
-    SignupOwnerComponent,
-    LoginOwnerComponent,
     LoginUserComponent,
     BeerComponent,
     BreweryComponent,
