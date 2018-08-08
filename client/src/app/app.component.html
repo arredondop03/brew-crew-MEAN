@@ -1,9 +1,10 @@
 <!DOCTYPE html>
   <div class="wrapper">
-    <div class="wrapper::after">
+
 
     <app-nav-bar></app-nav-bar>
     <router-outlet></router-outlet>
+
 
     <div *ngIf="theActualUser.username">
       <button (click)="loggingOut()"> Log Out </button>
