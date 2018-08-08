@@ -1,0 +1,21 @@
+<div>
+  
+  <h4>{{thatBeer.name}}</h4>
+  <br>
+  description: {{thatBeer.description}}
+  <br>
+  alcohol Content: {{thatBeer.alchContent}}
+  <br>
+  price: {{thatBeer.price}}
+  
+</div>
+
+<div *ngFor = "let review of beerReview">
+
+  {{review.review}}
+  <br>
+  Rating: {{review.rating}}
+  <br>
+  Beer: {{review.belongsToBeer}}
+
+</div>
