@@ -22,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http';
 import { EditBeerReviewComponent } from './edit-beer-review/edit-beer-review.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 
@@ -29,12 +30,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'signup', component: SignupUserComponent},
   { path: 'login', component: LoginUserComponent},
+  { path: 'breweries', component: BreweryComponent},
+  { path: 'beers', component: BeerComponent},
+  { path: 'breweries/:id/beers', component: BeerComponent},
   { path: 'beers/:id', component: BeerDetailsComponent}
-
-
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ const routes: Routes = [
     ReviewComponent,
     EditBeerReviewComponent,
     BeerDetailsComponent,
-
+    NavBarComponent,
   ],
 
   imports: [
