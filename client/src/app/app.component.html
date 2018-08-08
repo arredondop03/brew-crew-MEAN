@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-
-<router-outlet></router-outlet>
-<!-- <hr /> -->
-<!-- <app-review></app-review> -->
-<!-- <hr /> -->
-<app-beer></app-beer>
-<!-- <hr /> -->
-<app-brewery></app-brewery>
-<!-- <hr /> -->
+  <div class="wrapper">
 
 
+    <app-nav-bar></app-nav-bar>
+    <router-outlet></router-outlet>
 
-<div *ngIf="theActualUser.username">
-    <button (click)="loggingOut()" > Log Out </button>
+
+    <div *ngIf="theActualUser.username">
+      <button (click)="loggingOut()"> Log Out </button>
+    </div>
   </div>
-
-  <a [routerLink]="['/']">home</a>
+</div>
