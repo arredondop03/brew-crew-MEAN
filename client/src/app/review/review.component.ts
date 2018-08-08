@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ReviewService } from '../services/review.service'
 
 @Component({
@@ -7,6 +7,7 @@ import { ReviewService } from '../services/review.service'
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
+@Input() thatBeer: any;
 
   thatOneReview: any;
   // beerEntry: any = {};
@@ -26,14 +27,24 @@ export class ReviewComponent implements OnInit {
       this.thatOneReview = res.reverse();
     })
   }
-
+  
+  //add
   aNewReview(beerId){
-    // console.log(this.beerReview)
-    this.viewService.addReview(beerId)
+    this.viewService.addReview(beerId, this.userReview)
     .subscribe((res) =>{
-      this.thatBeerReview()
+      this.thatBeerReview();
+      location.reload();
     })
   }
+
+  //edit
+  changeReview(beerId, reviewId){
+    this.viewService.editReview(beerId, reviewId)
+    .subscribe(() =>{
+
+    })
+  }
+
 
   deleteReview(beerId, reviewId){
     // beerId: id
