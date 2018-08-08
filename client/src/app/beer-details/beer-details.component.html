@@ -9,6 +9,7 @@
   price: {{thatBeer.price}}
   
 </div>
+<button (click)="removeBeer()">Delete Beer</button>
 <hr>
 Reviews:
 <div *ngFor = "let reviews of thoseReviews">
@@ -18,9 +19,9 @@ Reviews:
     Review: {{onewReview.review}}
     <br>
     Rating: {{ onewReview.rating }}
+
     <hr>
   </div>
-
 </div>
 
 

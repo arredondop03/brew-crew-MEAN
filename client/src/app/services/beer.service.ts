@@ -35,4 +35,16 @@ export class BeerService {
     .catch(this.handleError)
   }
 
+  editBeer(theBreweryID, theId){
+    return this.http.post('http://localhost:3000/api/breweries/' + theBreweryID + '/beers/edit/' + theId, {withCredentials: true})
+    .map((res) => res.json())
+    .catch(this.handleError)
+  }
+
+  deleteBeer(theBreweryID, theId){
+    return this.http.post('http://localhost:3000/api/breweries/' + theBreweryID + '/beers/delete/' + theId, {withCredentials: true})
+    .map((res) => res.json())
+    .catch(this.handleError)
+  }
+
 }

@@ -27,7 +27,8 @@ export class ReviewComponent implements OnInit {
       this.thatOneReview = res.reverse();
     })
   }
-
+  
+  //add
   aNewReview(beerId){
     this.viewService.addReview(beerId, this.userReview)
     .subscribe((res) =>{
@@ -35,6 +36,15 @@ export class ReviewComponent implements OnInit {
       location.reload();
     })
   }
+
+  //edit
+  changeReview(beerId, reviewId){
+    this.viewService.editReview(beerId, reviewId)
+    .subscribe(() =>{
+
+    })
+  }
+
 
   deleteReview(beerId, reviewId){
     // beerId: id
