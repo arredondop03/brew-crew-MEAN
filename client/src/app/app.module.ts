@@ -23,6 +23,7 @@ import { HttpModule } from '@angular/http';
 import { EditBeerReviewComponent } from './edit-beer-review/edit-beer-review.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -49,6 +50,7 @@ const routes: Routes = [
     EditBeerReviewComponent,
     BeerDetailsComponent,
     NavBarComponent,
+    FooterComponent,
   ],
 
   imports: [
