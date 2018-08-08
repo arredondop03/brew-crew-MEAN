@@ -3,6 +3,7 @@ const beerRouter = express.Router();
 
 const Beer       = require('../models/beer');
 const Brewery    = require('../models/brewery');
+const Review    = require('../models/review');
 
 
 //this should get all the beers regardless of the brewery
@@ -68,10 +69,22 @@ beerRouter.post('/breweries/:id/beers/create', (req, res, next) => {
 //That special drink
 //works
 beerRouter.get('/beers/:id', (req, res, next)=>{
+  const reviews = [];
+  let data = {
+    beerInfo: {},
+    theReviews: []
+  };
   Beer.findById(req.params.id)
-    .then((response)=>{
-      res.json(response)
-
+    .then((theBeer)=>{
+      Review.find({belongsToBeer: theBeer._id}).populate('author')
+      .then(allReviews => {
+        console.log(allReviews)
+        data.beerInfo = theBeer;
+        data.theReviews.push(allReviews);
+        console.log('the rev: ', data.theReviews)
+        res.json(data)
+      })
+      .catch(err => res.json(err))      
     .catch((err)=>{
       res.json(err);
     });

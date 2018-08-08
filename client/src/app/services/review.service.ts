@@ -16,7 +16,8 @@ export class ReviewService {
   handleError(e){
     return Observable.throw(e.json().message);
   }
-
+  //This one has to go 
+  //If you'd like this to stay then we'll need to go back to the back-end
   breweryReviews(){
     return this.http.get('http://localhost:3000/api/breweries/review')
     .map(res => res.json())
@@ -29,21 +30,22 @@ export class ReviewService {
     .catch(this.handleError)
   }
 
-  addReview(beerEntry){
-    return this.http.post(`http://localhost:3000/api/beers/${beerEntry}/review/create`, {withCredentials: true})
+  addReview(beerId, data){
+    console.log('service: ', beerId, 'data: +++++++ ', data)
+    return this.http.post(`http://localhost:3000/api/beers/${beerId}/review/create`, data, {withCredentials: true})
     .map(res => res.json())
     .catch(this.handleError)
   }
 
-  editReview(beerEntry, reviewEntry){
-    return this.http.post(`http://localhost:3000/api/beers/${beerEntry}/review/${reviewEntry}/edit`, {withCredentials: true})
+  editReview(beerId, reviewId){
+    return this.http.post(`http://localhost:3000/api/beers/${beerId}/review/${reviewId}/edit`, {withCredentials: true})
     .map(res => res.json())
     .catch(this.handleError)
   }
 
-  removeReview(beerEntry, reviewEntry){
-    return this.http.post(`http://localhost:3000/api/beers/${beerEntry}/review/${reviewEntry}/delete`, {withCredentials: true})
-    .map(res => res.json())
+  removeReview(beerId, reviewId){
+    return this.http.delete(`http://localhost:3000/api/beers/${beerId}/review/${reviewId}/delete`, {withCredentials: true})
+    .map((res) => res.json())
     .catch(this.handleError)
   }
 }

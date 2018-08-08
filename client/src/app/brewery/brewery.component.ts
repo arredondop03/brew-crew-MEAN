@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BreweryService } from '../services/brewery.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-brewery',
@@ -11,7 +12,11 @@ export class BreweryComponent implements OnInit {
   breweries:Array<any>;
   theNewBreweryEntry: any = {};
 
-  constructor(private theService: BreweryService) { }
+  constructor(private myActivatedRoute: ActivatedRoute, private theService: BreweryService) { }
+
+  ngOnInit() {
+    this.allBreweries();
+  }
 
   addNewBrewery(){
     this.theService.createBrewery(this.theNewBreweryEntry)
@@ -29,8 +34,5 @@ export class BreweryComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-      this.allBreweries();
-  }
 
 }

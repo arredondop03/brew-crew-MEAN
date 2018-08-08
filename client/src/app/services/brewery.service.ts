@@ -18,7 +18,7 @@ export class BreweryService {
   }
 
   allBreweries(){
-    return this.http.get('http://localhost:3000/api/breweries', {withCredentials: true})
+    return this.http.get('http://localhost:3000/api/breweries')
     .map(res => res.json())
     .catch(this.handleError)
   }

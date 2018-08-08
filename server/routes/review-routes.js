@@ -18,25 +18,25 @@ router.get('/breweries/review', (req, res, next)=>{
 
 
 
-//Create a review for that beer
-router.post('/review/create', (req, res, next)=>{
-  const newReview = {
-    author: req.body.author,
-    review: req.body.review
-  }
+// //Create a review for that beer
+// router.post('/review/create', (req, res, next)=>{
+//   const newReview = {
+//     author: req.body.author,
+//     review: req.body.review
+//   }
 
-  Beer.findById(req.user.myBrewery)
-  .then((theBrewery)=>{
-    theBrewery.review.unshift(newReview)
-    theBrewery.save()
-    .then((response)=>{
-      res.json(response)
-    })
-    .catch((err)=>{
-      res.json(err)
-    })
-  });
-});
+//   Beer.findById(req.user.myBrewery)
+//   .then((theBrewery)=>{
+//     theBrewery.review.unshift(newReview)
+//     theBrewery.save()
+//     .then((response)=>{
+//       res.json(response)
+//     })
+//     .catch((err)=>{
+//       res.json(err)
+//     })
+//   });
+// });
 
 
 
@@ -53,6 +53,7 @@ router.get('/review', (req, res, next)=>{
 
 //Create a review for that beer
 router.post('/beers/:id/review/create', (req, res, next)=>{
+  console.log('tha body: ', req.body)
   const newReview = new Review({
     author: req.user.id,
     review: req.body.review,
@@ -62,6 +63,8 @@ router.post('/beers/:id/review/create', (req, res, next)=>{
   newReview.save()
   .then((newReview)=>{
     console.log("this is the req params=============== ", req.params.id)
+    console.log("this is the new review=============== ", newReview)
+
     Beer.findById(req.params.id)
     .then((thatBeerFromDb) => {
       console.log("THE BEER THAT IS HERE------------", thatBeerFromDb);

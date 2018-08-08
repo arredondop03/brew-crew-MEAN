@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit {
 
 
   loggingOut(){
-
     this.authService.logout()
     .subscribe(Res => {this.theActualUser = {}})
     console.log(' logged out ')

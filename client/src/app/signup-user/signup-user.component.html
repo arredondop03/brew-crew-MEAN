@@ -17,7 +17,7 @@
   <label>Password</label>
   <input type="text" name="thePassword" [(ngModel)]="signUpUser.password"><br>
 
-  <input type="radio" name="role" value="user" [(ngModel)]="signUpUser.role"> User 
+  <input type="radio" name="role" value="user" [(ngModel)]="signUpUser.role"> User
   <input type="radio" name="role" value="brewery" [(ngModel)]="signUpUser.role"> Brewery<br>
 
 
@@ -47,26 +47,10 @@
   <input type="number" name="thePhone" [(ngModel)]="userBrewery.phone"><br>
 
   <label>Website</label>
-  <input type="text" name="theWebsite" [(ngModel)]="userBrewery.site"><br>
+  <input type="text" name="theWebsite" [(ngModel)]="signUpUser.username"><br>
 
-  
-  
   </div>
 
-
-
-
-
-
-
-  
-
-
-
-
-
-
-  <br><br><br>
   <button ><a [routerLink]="['/']"> Register Account</a></button>
 </form>
 <p>
