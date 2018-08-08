@@ -31,10 +31,9 @@
       <p> {{aBeer.description}}</p>
       <p> {{aBeer.alchContent}}</p>
       <p> {{aBeer.price}}</p>
+      <a [routerLink]="['beers', aBeer._id]">See Details</a>
     </ng-template>
   </ngb-panel>
-  <a [routerLink]="['beers', aBeer._id]">See Details</a>
-
 
 
 

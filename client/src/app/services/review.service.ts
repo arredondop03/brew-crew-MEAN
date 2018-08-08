@@ -30,21 +30,21 @@ export class ReviewService {
     .catch(this.handleError)
   }
 
-  addReview(){
-    return this.http.post(`http://localhost:3000/api/beers/:id/review/create`, {withCredentials: true})
+  addReview(beerId){
+    return this.http.post(`http://localhost:3000/api/beers/${beerId}/review/create`, {withCredentials: true})
     .map(res => res.json())
     .catch(this.handleError)
   }
 
-  editReview(){
-    return this.http.post(`http://localhost:3000/api/beers/:id/review/:reviewid/edit`, {withCredentials: true})
+  editReview(beerId, reviewId){
+    return this.http.post(`http://localhost:3000/api/beers/${beerId}/review/${reviewId}/edit`, {withCredentials: true})
     .map(res => res.json())
     .catch(this.handleError)
   }
 
-  removeReview(){
-    return this.http.delete(`http://localhost:3000/api/beers/:id/review/:reviewid/delete`, {withCredentials: true})
-    .map(res => res.json())
+  removeReview(beerId, reviewId){
+    return this.http.delete(`http://localhost:3000/api/beers/${beerId}/review/${reviewId}/delete`, {withCredentials: true})
+    .map((res) => res.json())
     .catch(this.handleError)
   }
 }

@@ -15,20 +15,22 @@ import { ReviewComponent } from './review/review.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { SignupUserComponent } from './signup-user/signup-user.component';
-import { SignupOwnerComponent } from './signup-owner/signup-owner.component';
-import { LoginOwnerComponent } from './login-owner/login-owner.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http';
+import { EditBeerReviewComponent } from './edit-beer-review/edit-beer-review.component';
+import { BeerDetailsComponent } from './beer-details/beer-details.component';
 
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'signup', component: SignupUserComponent},
-  { path: 'login', component: LoginUserComponent}
+  { path: 'login', component: LoginUserComponent},
+  { path: 'beers/:id', component: BeerDetailsComponent}
+
 
 ];
 
@@ -40,12 +42,12 @@ const routes: Routes = [
     UserComponent,
     HomeComponent,
     SignupUserComponent,
-    SignupOwnerComponent,
-    LoginOwnerComponent,
     LoginUserComponent,
     BeerComponent,
     BreweryComponent,
     ReviewComponent,
+    EditBeerReviewComponent,
+    BeerDetailsComponent,
 
   ],
 

@@ -1,0 +1,12 @@
+<h3></h3>
+
+
+<form (submit)="changeReview()">
+  <label>Review</label>
+  <textarea name="" id="" [(ngModel)]="theReview.review" cols="30" rows="3"></textarea>
+
+  <label>Rating</label>
+  <input type="number" max="5" min="1" name="" id="" [(ngModel)]="theReview.rating">
+
+  <button>Submit Change</button>
+</form>
