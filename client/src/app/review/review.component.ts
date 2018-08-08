@@ -8,7 +8,7 @@ import { ReviewService } from '../services/review.service'
 })
 export class ReviewComponent implements OnInit {
 
-  beerReview: any;
+  thatOneReview: any;
   // beerEntry: any = {};
   newReview: any = {};
   userReview: any = {};
@@ -20,29 +20,25 @@ export class ReviewComponent implements OnInit {
   }
 
   thatBeerReview(){
-    console.log(this.beerReview)
+    // console.log(this.beerReview)
     this.viewService.beerReview()
     .subscribe((res) =>{
-      this.beerReview = res.reverse();
+      this.thatOneReview = res.reverse();
     })
   }
 
-  aNewReview(){
+  aNewReview(beerId){
     // console.log(this.beerReview)
-    this.viewService.addReview()
+    this.viewService.addReview(beerId)
     .subscribe((res) =>{
       this.thatBeerReview()
     })
   }
 
-  changeReview(){
-    this.viewService.editReview()
-    .subscribe()
-  }
-
-  deleteReview(){
-    this.viewService.removeReview()
-    .subscribe((res) => {this.beerReview = {}
-    })
-  }
+  deleteReview(beerId, reviewId){
+    // beerId: id
+    
+    this.viewService.removeReview(beerId, reviewId)
+    .subscribe((res) => {this.thatOneReview = {}})
+  }user
 }

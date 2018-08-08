@@ -1,4 +1,4 @@
-
+<hr>
 <div *ngFor = "let view of beerReview">
 
   <p>Author: {{view.author}}</p>
@@ -10,14 +10,18 @@
 
 </div>
 
-<button (click)="aNewReview()">Leave a Review</button>
+<hr>
+<!-- <button (click)="aNewReview()">Leave a Review</button> -->
 
 <form (submit)="aNewReview()">
+  <h3>Leave a Review</h3>
+
   <label>Review</label>
-  <textarea name="blah" id="blah" cols="30" rows="10" maxlength="150" [(ngModel)]="userReview.review"></textarea>
+  <textarea name="theReview" cols="30" rows="3" maxlength="150" [(ngModel)]="userReview.review"></textarea>
 
   <label>Rating</label>
-  <input type="number" name="blah" id="blah">
+  <input type="number" max="5" min="1" name="theRating" [(ngModel)]="userReview.rating">
 
   <button>Add Review</button>
 </form>
+<hr>
