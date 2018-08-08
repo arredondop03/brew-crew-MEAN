@@ -1,0 +1,26 @@
+<!-- <hr>
+<div *ngFor = "let view of beerReview">
+
+  <p>Author: {{view.author}}</p>
+  <p><i>"{{view.review}}"</i></p>
+  <p>Rating: {{view.rating}}</p>
+
+  <button (click)="changeReview(newReview)">Edit Review</button>
+  <button (click)="deleteReview()">Delete Review</button>
+
+</div>
+
+<hr> -->
+<!-- <button (click)="aNewReview()">Leave a Review</button> -->
+<form (ngSubmit)="aNewReview(thatBeer._id)">
+  <h3>Leave a Review</h3>
+
+  <label>Review</label>
+  <textarea name="theReview" cols="30" rows="3" maxlength="150" [(ngModel)]="userReview.review"></textarea>
+<!-- ngModel gets the data on the page as wee as we use it to pick up data from the page, that's why it has square and regular parenthesis -->
+  <label>Rating</label>
+  <input type="number" max="5" min="1" name="theRating" [(ngModel)]="userReview.rating">
+
+  <button>Add Review</button>
+</form>
+<hr>

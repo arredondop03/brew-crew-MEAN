@@ -1,0 +1,15 @@
+
+<h2>Login as a user </h2>
+<form (submit)="loggingIn()"  >
+
+  <label> Username</label>
+  <input type="text" name="theUsername" [(ngModel)]="loginUser.username" >
+
+  <label> Password</label>
+  <input type="password" name="thePassword" [(ngModel)]="loginUser.password" >
+
+  <button>Complete Registration</button>
+
+</form>
+
+<p>Don't have account? <a [routerLink]="['/signup']">Sign Up</a></p>

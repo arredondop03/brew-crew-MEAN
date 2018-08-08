@@ -1,0 +1,110 @@
+
+
+<!-- <button (click)="showSignupOptions()" >signup</button>
+
+
+
+
+
+<div *ngIf="!signupForm" *ngIf="">
+  <button>login</button>    
+</div>
+<br>
+
+<div *ngIf="signupForm">
+nfvnfvch
+
+
+</div>
+<br> -->
+
+
+<div *ngIf="theActualUser.username">
+  User: {{theActualUser | json}}
+</div>
+
+
+<!--
+<button (click)="loggingOut()" > Log Out </button>
+<button (click)="checkIsLoggedIn()" > Check if Logged in  </button>
+
+<hr>
+
+
+
+
+<p>create Account</p>
+<button name="breweryOwner" (click)="toggleForm()" >Brewery Owner</button>
+<button>Drunk mothafucker</button>
+
+<div *ngIf="showForm" >
+
+<h2>SignUp as a Brewery owner</h2>
+<form (submit)="signingUp()">
+
+<form (submit)="loggingIn()">
+
+  <label>Username</label>
+  <input type="text" name="theUsername">
+</form>
+
+
+<button (click)="loggingOut()">Log Out</button>
+
+<button (click)="checkIsLoggedIn()">check if logged in </button>
+
+
+
+
+<h2>Signup Form</h2>
+
+<form (submit)="signingUp()">
+
+  <label>Username</label>
+  <input [(ngModel)]="signUpUser.username" name="theUsername" type="text">
+
+  <label>Password</label>
+  <input [(ngModel)]="signUpUser.password" name="thePassword" type="text">
+
+
+  <button>Complete Registration</button>
+</form>
+
+
+<hr>
+<h2>Login Form</h2>
+
+<form (submit)="loggingIn()">
+
+  <label>Username</label>
+  <input [(ngModel)]="loginUser.username" name="theLoginUsername" type="text">
+
+  <label>Password</label>
+  <input [(ngModel)]="loginUser.password" name="theLoginPassword" type="text">
+
+
+  <button>Login</button>
+</form>
+
+
+</div>
+
+<br><br><br><br>
+
+
+<h2>Login </h2>
+<form (submit)="loggingIn()"  >
+
+  <label> Username</label>
+  <input type="text" name="theUsername" [(ngModel)]="loginUser.username" >
+
+  <label> Password</label>
+  <input type="password" name="thePassword" [(ngModel)]="loginUser.password" >
+
+  <button>Complete Registration</button>
+
+</form>
+
+<div *ngIf="theError"> error: {{theError}}</div> -->
+
+

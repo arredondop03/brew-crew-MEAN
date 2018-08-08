@@ -1,0 +1,17 @@
+.wrapper{
+  position:relative;
+  width: 110vw;
+  height:75vw;
+  background:linear-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.4)
+      ), url('/assets/home-images/HQtaproom.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+
+}
+
+
+/* (Better method) have a <div> that is position: absolute;
+before #main and the same height as #main, then apply
+the background-image and opacity: 0.2; filter: alpha(opacity=20);. */

@@ -1,0 +1,58 @@
+<div>
+  username: {{theActualUser.username}}
+
+</div>
+
+<h2>SignUp as an User</h2>
+<form (submit)="signingUp()">
+
+  <label for="email">Email</label>
+  <input id="email" type="text" name="theEmail" [(ngModel)]="signUpUser.email"><br>
+
+
+
+  <label>Username</label>
+  <input type="text" name="theUsername" [(ngModel)]="signUpUser.username"><br>
+
+  <label>Password</label>
+  <input type="text" name="thePassword" [(ngModel)]="signUpUser.password"><br>
+
+  <input type="radio" name="role" value="user" [(ngModel)]="signUpUser.role"> User
+  <input type="radio" name="role" value="brewery" [(ngModel)]="signUpUser.role"> Brewery<br>
+
+
+
+<div *ngIf="signUpUser.role === 'brewery'">
+  <h3>Brewery information</h3> <br><br>
+
+  <label>Name</label>
+  <input type="text" name="theName" [(ngModel)]="userBrewery.name"><br>
+
+  <label>Adress</label>
+  <input type="text" name="theAddress" [(ngModel)]="userBrewery.adress"><br>
+
+  <label>City</label>
+  <input type="text" name="theCity" [(ngModel)]="userBrewery.city"><br>
+
+  <label>State</label>
+  <input type="text" name="theState" [(ngModel)]="userBrewery.state"><br>
+
+  <label>Zip code</label>
+  <input type="text" name="theZip" [(ngModel)]="userBrewery.zip"><br>
+
+  <label>Hours of operation</label>
+  <input type="text" name="theHours" [(ngModel)]="userBrewery.hours"><br>
+
+  <label>Phone</label>
+  <input type="number" name="thePhone" [(ngModel)]="userBrewery.phone"><br>
+
+  <label>Website</label>
+  <input type="text" name="theWebsite" [(ngModel)]="signUpUser.username"><br>
+
+  </div>
+
+  <button ><a [routerLink]="['/']"> Register Account</a></button>
+</form>
+<p>
+  Already have an account?<a [routerLink]="['/login']" > Login</a>
+</p>

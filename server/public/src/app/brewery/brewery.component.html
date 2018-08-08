@@ -1,0 +1,21 @@
+
+<h1>List of Breweries</h1>
+
+<h2>All Breweries</h2>
+  <div class="card-columns">
+  <div class="card" *ngFor="let aBrewery of breweries" style="width: 25vw">
+    <img class="card-img-top" src="..." alt="Brewery-Logo" />
+        <h2 class="card-title">{{aBrewery.name}}</h2>
+        <hr />
+        <div class="card-body">
+        <p>{{aBrewery.address}}</p>
+        <p>{{aBrewery.city}}</p>
+        <p>{{aBrewery.state}}</p>
+        <p>{{aBrewery.zip}}</p>
+        <p>{{aBrewery.phone}}</p>
+        <p>{{aBrewery.site}}</p>
+        <hr />
+        <p><a [routerLink]="['/breweries', aBrewery._id, 'beers']" class="btn btn-primary" role="button">View Beers</a>
+      </div>
+    </div>
+  </div>

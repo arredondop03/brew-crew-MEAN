@@ -1,0 +1,39 @@
+
+<h2>Welcome to the Beer Component Portion</h2>
+
+<h2>One day when I grow up I'll make new beers </h2>
+<!--Creating a Portion for the User to add a New Beer/still missing buttons and a nicer layout  -->
+
+<label>Beer Name: </label>
+<input [(ngModel)]="theNewBeerEntry.name" name="theName" type="text"/><br />
+
+<label>Brewery: </label>
+<input [(ngModel)]="theNewBeerEntry.brewery" name="theBrewery" type="text"/><br />
+
+<label>Beer Description: </label>
+<input [(ngModel)]="theNewBeerEntry.description" name="theDescription" type="text" /><br />
+
+<label>Alcohol Content: </label>
+<input [(ngModel)]="theNewBeerEntry.alchContent" name="theAlcoholContent" type="text" /><br />
+
+<label>Price: </label>
+<input [(ngModel)]="theNewBeerEntry.price" name="thePrice" type="text" /><br />
+
+<button>Add Beer to Beer List</button>
+
+<hr />
+<h2>We can iterate over beers</h2>
+<div class ="" *ngFor="let aBeer of beers">
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title={{aBeer.name}}>
+    <ng-template ngbPanelContent>
+      <p> {{aBeer.brewery}}</p>
+      <p> {{aBeer.description}}</p>
+      <p> {{aBeer.alchContent}}</p>
+      <p> {{aBeer.price}}</p>
+      <a [routerLink]="['beers', aBeer._id]">See Details</a>
+    </ng-template>
+  </ngb-panel>
+
+
+
