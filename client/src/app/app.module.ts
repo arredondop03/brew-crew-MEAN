@@ -22,6 +22,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { HttpModule } from '@angular/http';
 import { EditBeerReviewComponent } from './edit-beer-review/edit-beer-review.component';
 import { BeerDetailsComponent } from './beer-details/beer-details.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 
@@ -29,16 +30,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'signup', component: SignupUserComponent},
   { path: 'login', component: LoginUserComponent},
-<<<<<<< HEAD
-  { path: 'breweries/:id/beers', component: BeerComponent}
-=======
+  { path: 'breweries', component: BreweryComponent},
+  { path: 'beers', component: BeerComponent},
+  { path: 'breweries/:id/beers', component: BeerComponent},
   { path: 'beers/:id', component: BeerDetailsComponent}
-
->>>>>>> 66575f234623b942468efa0cd8cd00ea675ab732
-
 ];
-
-
 
 @NgModule({
   declarations: [
@@ -46,17 +42,13 @@ const routes: Routes = [
     UserComponent,
     HomeComponent,
     SignupUserComponent,
-<<<<<<< HEAD
-    LoginUserComponent, 
-=======
     LoginUserComponent,
->>>>>>> 66575f234623b942468efa0cd8cd00ea675ab732
     BeerComponent,
     BreweryComponent,
     ReviewComponent,
     EditBeerReviewComponent,
     BeerDetailsComponent,
-
+    NavBarComponent,
   ],
 
   imports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BeerService } from '../services/beer.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class BeerComponent implements OnInit {
 
   theNewBeerEntry: any = {};
 
-  constructor(private theService: BeerService) { }
+  constructor(private theService: BeerService, private myActivatedRoute: ActivatedRoute) { }
 
   addNewBeer(){
     this.theService.createBeer(this.theNewBeerEntry)

@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class BeerDetailsComponent implements OnInit {
   thatBeer: any;
 
-  
+
 
   constructor(private theService: BeerService, private myActivated:ActivatedRoute) { }
 
@@ -21,7 +21,7 @@ export class BeerDetailsComponent implements OnInit {
     });
   }
 
-  
+
   beerDetails(beerId){
     this.theService.oneBeer(beerId)
     .subscribe((res)=>{
