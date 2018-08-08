@@ -1,10 +1,9 @@
 
 
 .wrapper{
-
-  position:absolute;
-  width: 100vw;
-  height: 70vw;
+  position:relative;
+  width: 110vw;
+  height:75vw;
   z-index: -1;
   background:linear-gradient(
       rgba(255, 255, 255, 0.4),
@@ -12,6 +11,7 @@
       ), url('/assets/home-images/HQtaproom.jpg');
       background-size: contain;
       background-repeat: no-repeat;
+
 }
 
 
