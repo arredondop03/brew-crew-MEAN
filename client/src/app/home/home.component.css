@@ -1,0 +1,36 @@
+.gifs{
+  width: 100vw;
+}
+
+.first-part{
+  width: 100vw;
+  height: 60vh;
+  background-color: white;
+  color: #8B4200;
+  text-align: center;
+}
+
+.first-image{
+  background-image: url("/assets/home-images/tim-bennett-607824-unsplash.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 50vh;
+  background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.title1{
+color:white;
+}
+
+.grow{
+  flex-grow: 2;
+
+}
+
+.sometimes-grow{
+  flex-grow:1; 
+}

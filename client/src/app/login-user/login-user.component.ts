@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-user',
@@ -15,14 +16,24 @@ export class LoginUserComponent implements OnInit {
 
   theError:any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private myRouter: Router) { }
   loggingIn(){
     console.log(this.loginUser);
     this.authService.login(this.loginUser)
-    .subscribe(
-      res => {this.successCallback(res)},
-      err => {this.errorCallback(err)}
-    );
+    .toPromise()
+    .then( userObject => {
+      this.theActualUser = userObject;
+      this.myRouter.navigate(['/'])
+      location.reload();
+    } )
+    .catch( err => {
+      const parsedErr = err.json();
+      this.theError = parsedErr.message;
+    } )
+    // .subscribe(
+    //   res => {this.successCallback(res)},
+    //   err => {this.errorCallback(err)}
+    // );
   }
 
   successCallback(userObject){
@@ -36,6 +47,15 @@ export class LoginUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.isLoggedIn()
+    .toPromise()
+    .then( () => {
+      this.myRouter.navigate(['/']);
+    } )
+    .catch( err => {
+      const parsedErr = err.json();
+      this.theError = parsedErr.message;
+    } )
   }
 
 }

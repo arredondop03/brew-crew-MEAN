@@ -1,19 +1,39 @@
-<nav class="theNavBar navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]='[""]'>Brew-Crew</a>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+<nav class="theNavBar navbar navbar-expand-sm navbar-light bg-light">
+
+
+
+  <a class="navbar-brand" [routerLink]='[""]' (click)="showButtonsAgain()"> <img src="/assets/home-images/two-beers.png" alt="" srcset=""> </a>
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/signup']"> Signup </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/login']">Login</a>
-      </li>
-      <li class="nav-item">
+
+      <div *ngIf="!theActualUser.username && buttons" class="d-flex flex-row"> 
+        <li class="nav-item d-inline">
+          <a  (click)="disappearButtons()" class="nav-link" [routerLink]="['/signup']"> Signup </a>
+        </li>
+        <li class="nav-item d-inline">
+          <a (click)="disappearButtons()" class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+      </div>
+      <div *ngIf="theActualUser.username">
+          <li class="nav-item">
+
         <a class="nav-link" [routerLink]='["/breweries"]'>View Breweries</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]='["/beers"]'>View All Beers</a>
       </li>
+      <li class="nav-item">
+          
+        <button (click)="loggingOut()">logout</button>
+        </li>
+</div>
     </ul>
   </div>
+
+
+
+
+
+
 </nav>
+

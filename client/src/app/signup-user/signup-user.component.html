@@ -17,11 +17,11 @@
   <label>Password</label>
   <input type="text" name="thePassword" [(ngModel)]="signUpUser.password"><br>
 
-  <input type="radio" name="role" value="user" [(ngModel)]="signUpUser.role"> User
+  <input type="radio" name="role" value="user" [(ngModel)]="signUpUser.role"> Customer
   <input type="radio" name="role" value="brewery" [(ngModel)]="signUpUser.role"> Brewery<br>
 
 
-
+// 
 <div *ngIf="signUpUser.role === 'brewery'">
   <h3>Brewery information</h3> <br><br>
 
@@ -33,7 +33,7 @@
 
   <label>City</label>
   <input type="text" name="theCity" [(ngModel)]="userBrewery.city"><br>
-
+  
   <label>State</label>
   <input type="text" name="theState" [(ngModel)]="userBrewery.state"><br>
 
@@ -47,12 +47,20 @@
   <input type="number" name="thePhone" [(ngModel)]="userBrewery.phone"><br>
 
   <label>Website</label>
-  <input type="text" name="theWebsite" [(ngModel)]="signUpUser.username"><br>
+  <input type="text" name="theWebsite" [(ngModel)]="userBrewery.site"><br>
 
   </div>
 
-  <button ><a [routerLink]="['/']"> Register Account</a></button>
+
+  
+
+
+  <button >Register Account</button>
 </form>
 <p>
   Already have an account?<a [routerLink]="['/login']" > Login</a>
 </p>
+
+
+
+<p>message: {{theError | json}}</p>

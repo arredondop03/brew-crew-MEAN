@@ -4,14 +4,14 @@ const Schema   = mongoose.Schema;
 const USERROLES = ["admin", "brewery", "user"];
 
 const userSchema = new Schema({
-  email: String,
-  password: String,
-  username: String,
+  email: {type: String, required: true},
+  password:{type: String, required: true},
+  username: {type: String, required: true},
   reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
   // userImage: String,
   // barCrawlLoc:[{type: Schema.Types.ObjectId}]
   myBrewery:{type: Schema.Types.ObjectId, ref: 'Brewery'},
-  role: {type:String, enum: USERROLES },
+  role: {type:String, enum:USERROLES , required: false},
 
 },{timestamps: true});
 

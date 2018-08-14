@@ -38,7 +38,7 @@ authRoutes.post('/signup', (req, res, next)=> {
     theUser.save((err) => {
     
       if(err){
-        res.status(400).json({message: "Something went wrong here"});
+        res.status(400).json({message: "All fields are required"});
         return;
       }
 

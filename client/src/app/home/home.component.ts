@@ -24,12 +24,11 @@ export class HomeComponent implements OnInit {
   }
 
   disappearButtons(){
+
     this.buttons = !this.buttons
   }
 
-  reloadPage(){
-    location.reload();
-  }
+ 
 
 
   loggingOut(){
@@ -38,7 +37,27 @@ export class HomeComponent implements OnInit {
     console.log(' logged out ')
   }
 
+
+  checkIfLoggedIn(){
+    this.authService.isLoggedIn()
+    .toPromise()
+    .then( resFromDB => {
+      console.log('user in notes: ', resFromDB)
+      this.theActualUser = resFromDB;
+    } )
+  }
+
   ngOnInit() {
+    // this.checkIfLoggedIn()
+    this.authService.isLoggedIn()
+    .toPromise()
+    .then( resFromDB => {
+      console.log('user in notes: ', resFromDB)
+      this.theActualUser = resFromDB;
+    } )
   }
 
 }
+
+
+// heyyyy
